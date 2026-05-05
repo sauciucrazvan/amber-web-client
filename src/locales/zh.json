@@ -1,0 +1,538 @@
+{
+  "common": {
+    "help": "帮助",
+    "info": "信息",
+    "show": "显示",
+    "hide": "隐藏",
+    "submit": "提交",
+    "cancel": "取消",
+    "confirm": "Confirm",
+    "remove": "Remove",
+    "block": "Block",
+    "delete": "Delete",
+    "verified": "已验证",
+    "unverified": "请先验证你的账号！",
+    "errors": {
+      "too_many_requests": "请求过多！请减速！"
+    },
+    "connection": {
+      "failed": "连接到所选服务器失败。"
+    },
+    "online": "在线",
+    "offline": "离线"
+  },
+  "login": {
+    "registerPrompt": "还没有账号？",
+    "registerLink": "注册",
+    "title": "登录你的账号",
+    "subtitle": "请输入你的凭据以登录",
+    "usernamePlaceholder": "你的用户名",
+    "passwordPlaceholder": "密码",
+    "forgotPassword": "忘记密码？",
+    "fillInput": "请填写输入框",
+    "incorrectCredentials": "用户名或密码不正确。",
+    "greeting": "欢迎回来！",
+    "account_disabled": "该账号已被删除。",
+    "recovery": {
+      "title": "恢复你的密码",
+      "description": "你可以每 30 分钟进行一次请求。",
+      "username": "用户名",
+      "code": "恢复代码",
+      "password": "新密码",
+      "invalid_username": "无效的用户名",
+      "invalid_code": "你输入的代码已过期或无效。",
+      "invalid_password": "无效的密码",
+      "locked": "密码恢复暂时已锁定。请稍后重试。",
+      "too_soon": "你可以每 30 分钟请求一次密码更改。",
+      "too_late": "你使用的代码已经过期。请请求新的密码更改。",
+      "different_passwords": "密码不匹配。",
+      "sent": "恢复代码已发送至你的邮箱。请检查收件箱（包括垃圾邮件！）。",
+      "success": "你已成功更改密码。请登录。",
+      "action": {
+        "next": "下一步",
+        "finish": "完成",
+        "back": "返回"
+      }
+    }
+  },
+  "register": {
+    "loginPrompt": "已经有账号？",
+    "loginLink": "登录",
+    "title": "创建账号",
+    "subtitle": "请输入以下信息来创建你的账号",
+    "usernamePlaceholder": "唯一用户名",
+    "usernameHint": "仅允许字母和数字。",
+    "fullnamePlaceholder": "显示名称",
+    "emailPlaceholder": "你的邮箱地址",
+    "emailHint": "我们将用它来验证你",
+    "passwordPlaceholder": "输入密码",
+    "passwordHint": "密码至少需要 8 个字符",
+    "createAccount": "创建账号",
+    "terms": "继续即表示你同意我们的<terms>服务条款</terms>和<privacy>隐私政策</privacy>。",
+    "fillInput": "请填写输入框",
+    "invalidUsername": "用户名无效。不得包含空格或特殊字符。最大长度为 16。",
+    "invalidPassword": "密码无效。至少 8 个字符，且至少包含 1 个小写字母、1 个大写字母和 1 个数字。",
+    "nameRequired": "必须填写全名。",
+    "emailRequired": "邮箱是必填项",
+    "invalidName": "全名必须包含名和姓。",
+    "invalidEmail": "邮箱格式不正确。",
+    "emailTaken": "该邮箱已被注册！",
+    "usernameTaken": "该用户名已被占用。",
+    "greeting": "欢迎使用 Amber！",
+    "verify": {
+      "title": "验证你的账号",
+      "description": {
+        "step_one": "我们会发送一封包含验证码的邮件。",
+        "step_two": "请输入我们发送到你邮箱的验证码。"
+      },
+      "not_verified": "你的账号未被验证。",
+      "verify_now": "立即验证",
+      "already_verified": "你已被验证",
+      "too_soon": "验证邮件已发送。请在 30 分钟后重试。",
+      "email_sent": "验证邮件已发送。请检查收件箱（包括垃圾邮件！）。",
+      "invalid_code": "你提供的代码无效",
+      "too_late": "你的验证码已过期，请重试。",
+      "locked": "由于尝试次数过多，您的账户已被暂时锁定。请稍后重试。",
+      "success": "你的账号已被验证。可能需要一些时间才能更新。",
+      "action": {
+        "back": "返回",
+        "finish": "验证",
+        "next": "发送"
+      }
+    }
+  },
+  "legal": {
+    "terms": {
+      "title": "条款与条件",
+      "description": "使用 Amber 前，请先阅读条款与条件。",
+      "content": "1. 条款接受\\n创建账户并访问 Amber 即表示你同意受这些条款与条件的约束。如果你不同意这些条款的任何部分，你不能使用该服务。\\n\\n2. 用户责任\\n你负责维护账户凭证的保密性和账户下发生的所有活动。你同意仅将 Amber 用于合法目的，且不以侵犯他人权利的方式使用。\\n\\n3. 用户行为\\n你同意不骚扰、威胁或伤害其他用户。滥用性、冒犯性或不适当的内容严格禁止。任何违规可能导致账户被暂停或关闭。\\n\\n4. 服务修改\\n我们保留随时修改或停止 Amber（全部或部分）的权利。我们对服务的任何修改、暂停或停止不承担责任。\\n\\n5. 责任限制\\n在法律允许的最大范围内，Amber 及其创建者对因你使用或无法使用服务而导致的间接、偶然、特殊或惩罚性损害不承担责任。\\n\\n6. 条款修改\\n我们可随时更新这些条款。修改后继续使用 Amber 即表示接受新条款。我们建议你定期查看本协议。\\n\\n7. 终止\\n我们保留随时因违反这些条款或为保护服务完整性而认为必要的任何原因而终止或暂停你的账户的权利。"
+    },
+    "privacy": {
+      "title": "隐私政策",
+      "description": "请查看 Amber 如何处理并保护你的数据。",
+      "content": "我们只收集运行 Amber 所必需的信息，例如账户信息以及核心功能所需的使用数据。我们会保护你的数据，不会出售个人信息。"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "description": "应用设置",
+    "tabs": {
+      "general": "通用",
+      "appearance": "外观",
+      "devices": "设备",
+      "account": "账户",
+      "about": "关于"
+    },
+    "general": {
+      "language": {
+        "title": "语言",
+        "description": "选择应用语言",
+        "options": {
+          "en": "英语",
+          "ro": "罗马尼亚语",
+          "de": "德语",
+          "fr": "法语",
+          "es": "西班牙语",
+          "zh": "中文",
+          "ja": "日语",
+          "it": "意大利语"
+        }
+      },
+      "tray": {
+        "title": "最小化到托盘",
+        "description": "关闭时将直接退出应用，而不是隐藏到托盘。"
+      },
+      "startOnBoot": {
+        "title": "开机启动",
+        "description": "登录系统时自动启动 Amber。"
+      },
+      "devices": {
+        "microphone": {
+          "title": "Microphone",
+          "description": "Select the default microphone for calls.",
+          "empty": "No microphones found",
+          "fallback": "Microphone {{index}}"
+        },
+        "camera": {
+          "title": "Camera",
+          "description": "Select the default camera for calls.",
+          "empty": "No cameras found",
+          "fallback": "Camera {{index}}"
+        },
+        "speaker": {
+          "title": "Speaker",
+          "description": "Select the default speaker for calls.",
+          "empty": "No speakers found",
+          "fallback": "Speaker {{index}}"
+        }
+      },
+      "help": {
+        "title": "帮助",
+        "description": "遇到问题或需要帮助处理某些事情？",
+        "action": "支持"
+      },
+      "feedback": {
+        "title": "反馈",
+        "description": "帮助我们改进",
+        "action": "反馈"
+      }
+    },
+    "appearance": {
+      "theme": {
+        "title": "主题",
+        "description": "这会改变整个应用的主题。"
+      },
+      "scaling": {
+        "title": "缩放",
+        "description": "在屏幕上显示更多内容。",
+        "label": "缩放",
+        "defaultSuffix": "（默认）"
+      },
+      "sidebarPosition": {
+        "title": "侧边栏位置",
+        "description": "更改侧边栏位置",
+        "label": "位置",
+        "options": {
+          "left": "左侧",
+          "right": "右侧"
+        }
+      }
+    },
+    "account": {
+      "details": {
+        "title": "账户详情",
+        "description": "你的公开资料和登录身份。"
+      },
+      "signOut": {
+        "title": "退出登录",
+        "description": "确定要退出登录吗？你将被重定向到登录页面。",
+        "action": "退出登录",
+        "toast": "已成功退出登录"
+      },
+      "delete": {
+        "title": "删除账号",
+        "description": "将永久删除你的所有数据。此操作无法由支持撤销。",
+        "action": "删除",
+        "toast": "账号已成功删除"
+      },
+      "data": {
+        "title": "请求个人数据",
+        "description": "请求我们所保存的所有关于你的数据",
+        "action": "请求",
+        "too_soon": "你可以每周请求一次你的数据。",
+        "toast": "你请求的数据已发送到你的邮箱。请检查收件箱（包括垃圾邮件！）。"
+      },
+      "password": {
+        "title": "更改密码",
+        "description": "修改你的密码。请注意：至少包含一个小写字母、一个大写字母、一个数字和一个特殊字符。",
+        "action": "更改",
+        "different": "两次输入的密码不一致。",
+        "updated": "密码已成功更新。",
+        "current_password": "当前密码",
+        "new_password": "新密码",
+        "new_password_confirmation": "确认新密码"
+      },
+      "email": {
+        "title": "更改邮箱",
+        "description": "更改你账号的邮箱。请确保邮箱有效。",
+        "request_description": "请输入新邮箱和密码。我们会发送验证码用于确认并完成更改。",
+        "confirm_description": "请输入确认验证码以继续。",
+        "verify_description": "请输入验证验证码以完成邮箱更改。",
+        "confirm_code": "确认验证码",
+        "verify_code": "验证码",
+        "same": "你不能将邮箱更改为当前邮箱。",
+        "no_pending": "没有待处理的邮箱更改请求。",
+        "not_confirmed": "邮箱更改尚未确认。",
+        "already_confirmed": "邮箱更改已确认。",
+        "too_late": "验证码已过期。请重新开始。",
+        "locked": "由于尝试次数过多，邮箱更改已被暂时锁定。请稍后重试。",
+        "too_soon": "你可以每半小时请求一次新的邮箱更改。",
+        "invalid_code": "验证码无效。",
+        "verify_sent": "验证码已发送到你的邮箱。请检查收件箱（包括垃圾邮件！）。",
+        "updated": "邮箱地址已成功更新！"
+      },
+      "name": {
+        "title": "更改显示名称",
+        "description": "此操作每周仅可使用一次。",
+        "action": "更改",
+        "same": "无法将全名更新为当前全名。",
+        "updated": "显示名称已成功更新。下一次可在一周后更改。",
+        "tooSoon": "你已达到更改次数上限。你可以在 <time>{{days}}</time> 天后修改姓名。"
+      },
+      "manage": {
+        "title": "管理账户信息",
+        "short_title": "Manage",
+        "description": "在一个地方更新显示名称、邮箱和密码。"
+      },
+      "general": {
+        "title": "常规设置",
+        "description": "隐私、安全和数据管理。"
+      },
+      "actions": {
+        "title": "操作"
+      },
+      "bio": {
+        "too_long": "请限制在 256 个字符以内。",
+        "updated": "个人简介已成功更新！"
+      },
+      "avatar": {
+        "uploaded": "Avatar uploaded successfully!",
+        "error": "Failed to upload avatar. Please try again.",
+        "confirm": {
+          "title": "Upload Avatar",
+          "description": "Are you sure you want to use this image as your avatar?",
+          "upload": "Upload"
+        }
+      }
+    },
+    "about": {
+      "tabs": {
+        "about": "关于",
+        "data_for_nerds": "技术信息",
+        "updates": "更新",
+        "developer": "开发者"
+      },
+      "buildNumber": "构建编号",
+      "platform": "平台",
+      "electron": "Electron",
+      "chromium": "Chromium",
+      "updatesLabel": "更新",
+      "updaterUnavailable": "更新器状态不可用。",
+      "unableToReadUpdaterStatus": "无法读取更新器状态。",
+      "developer": {
+        "server": "Server",
+        "debugOnly": "仅限调试构建",
+        "selectServer": "选择服务器",
+        "unableToLoad": "无法加载服务器配置。",
+        "unableToApply": "无法应用所选服务器。"
+      },
+      "downloadedProgress": "已下载 {{progress}}%",
+      "actions": {
+        "check": "检查更新",
+        "checking": "检查中...",
+        "restart": "重启以更新"
+      },
+      "status": {
+        "idle": "空闲",
+        "disabled": "已禁用",
+        "checking": "正在检查更新",
+        "available": "有可用更新",
+        "not-available": "已是最新版本",
+        "downloading": "正在下载",
+        "downloaded": "可安装",
+        "error": "错误"
+      }
+    }
+  },
+  "contacts": {
+    "title": "联系人",
+    "none": "暂无联系人",
+    "failed_loading": "加载联系人失败",
+    "profile": "资料",
+    "block": "拉黑",
+    "remove": "移除",
+    "invalid_user": "未找到与 {{user}} 匹配的用户。",
+    "not_found": "未找到联系人。",
+    "removed": "已成功移除联系人。",
+    "yourself": "你不能对自己执行此操作。",
+    "not_blocked": "该用户未被拉黑。",
+    "unblock": "取消拉黑",
+    "unblocked": "已成功取消拉黑 {{user}}。",
+    "already_added": "{{user}} 已在你的列表中。",
+    "not_added": "{{user}} 不在你的联系人列表中。",
+    "already_requested": "已向 {{user}} 发送过请求。",
+    "requested": "成功！已向 {{user}} 发送好友请求。",
+    "no_request": "你没有向 {{user}} 发送请求。",
+    "accepted": "你已与 {{user}} 成为好友。",
+    "declined": "你已拒绝 {{user}} 的请求。",
+    "removeConfirm": {
+      "title": "Remove Contact",
+      "description": "Are you sure you want to remove {{user}} from your contacts?"
+    },
+    "blockConfirm": {
+      "title": "Block Contact",
+      "description": "Are you sure you want to block {{user}}? You won't be able to chat with them and they won't be able to contact you."
+    },
+    "last_message": {
+      "attachment": "附件",
+      "call": "通话",
+      "unknown": "消息"
+    },
+    "add": {
+      "title": "添加联系人",
+      "description": "你可以使用对方的 Amber 用户名添加联系人。",
+      "action": "添加",
+      "username": "用户名"
+    },
+    "requests": {
+      "title": "请求",
+      "description": "接受或拒绝你收到的好友请求。",
+      "none": "目前没有收到请求。",
+      "accept": "接受",
+      "decline": "拒绝",
+      "notification": "<b>@{{user}}</b> 想和你成为朋友。"
+    },
+    "blocked": {
+      "unreachable": "该用户无法联系。请检查你是否已将其拉黑。",
+      "trigger": "管理已拉黑联系人",
+      "title": "已拉黑联系人",
+      "description": "管理你已拉黑的联系人。",
+      "none": "暂无已拉黑联系人",
+      "success": "已成功拉黑 {{user}}。"
+    }
+  },
+  "account": {
+    "verify": {
+      "notice": "请先验证你的账户以解锁全部功能。"
+    }
+  },
+  "homepage": {
+    "get_started": "开始使用",
+    "conversation": {
+      "title": "开始对话",
+      "get_started_description": "开始你的第一次对话只需三个简单步骤。",
+      "add_contacts": "添加联系人",
+      "add_contacts_hint": "打开添加联系人的流程，通过用户名邀请他人。",
+      "select": "选择联系人",
+      "select_hint": "从侧边栏选择联系人即可打开聊天。",
+      "message": "发送消息",
+      "message_hint": "输入你的消息，准备好后发送即可。"
+    },
+    "file": "发送文件"
+  },
+  "conversations": {
+    "you": "你",
+    "edited": "已编辑",
+    "history": {
+      "title": "编辑历史",
+      "description": "此消息的历史版本。",
+      "empty": "没有可用的历史版本。"
+    },
+    "no_messages": "暂无消息。",
+    "type_message": "输入消息",
+    "send_message": "发送消息",
+    "close": "关闭聊天",
+    "actions": {
+      "reply": "回复",
+      "edit": "编辑",
+      "delete": "删除"
+    },
+    "deleted_message": "Successfully deleted the message.",
+    "deleteMessage": {
+      "confirm": {
+        "title": "Delete Message",
+        "description": "Are you sure you want to delete this message? This action cannot be undone."
+      }
+    },
+    "error": {
+      "failed_loading": "Failed loading chat",
+      "failed_sending": "Failed sending message",
+      "not_participating": "You are not participating in this conversation.",
+      "too_long": "The message can not exceed 2048 characters.",
+      "invalid_message": "An error occured and we couldn't find the message data. Try again later!",
+      "no_permission": "You do not have permission to do that!",
+      "no_relation": "You are not friends with this users or they've blocked you."
+    }
+  },
+  "calls": {
+    "unknown": "Unknown",
+    "badge": {
+      "outgoing": "Outgoing call",
+      "incoming": "Incoming call",
+      "incomingCall": "Incoming call",
+      "incomingAudioCall": "Incoming audio call",
+      "incomingVideoCall": "Incoming video call",
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "status": {
+      "rejected": "Call rejected",
+      "missed": "Missed call",
+      "failed": "Call failed",
+      "ended": "Call ended"
+    },
+    "outgoing": {
+      "waiting": "Waiting for the other person to answer..."
+    },
+    "inProgress": {
+      "waitingRemoteVideo": "Waiting for remote video...",
+      "cameraOff": "Camera is turned off",
+      "noCamera": "No camera",
+      "speaker": "Speaker"
+    },
+    "ended": {
+      "duration": "Call duration: {{duration}}"
+    },
+    "history": {
+      "title": "Call history",
+      "empty": "No calls yet",
+      "failedLoading": "Failed loading call history",
+      "relative": {
+        "now": "刚刚",
+        "minutesAgo": "{{count}}分钟前",
+        "hoursAgo": "{{count}}小时前",
+        "daysAgo": "{{count}}天前",
+        "weeksAgo": "{{count}}周前"
+      },
+      "reasons": {
+        "timeout": "超时",
+        "canceled": "已取消",
+        "cancelled": "已取消",
+        "no_answer": "无人接听",
+        "busy": "占线"
+      },
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "page": "Page {{current}} / {{total}}"
+    },
+    "logs": {
+      "initiated": "Started a call",
+      "initiatedWithActor": "{{actor}} started a call",
+      "accepted": "Accepted the call",
+      "acceptedWithActor": "{{actor}} accepted the call",
+      "rejected": "Rejected the call",
+      "rejectedWithActor": "{{actor}} rejected the call",
+      "missed": "Missed call",
+      "finished": "Finished the call",
+      "finishedWithActor": "{{actor}} finished the call"
+    },
+    "toasts": {
+      "contactOffline": "This contact is offline.",
+      "mediaAccessFailed": "Could not access camera/microphone.",
+      "connectionUnavailable": "Connection unavailable. Please try again.",
+      "initializeFailed": "Failed to initialize video call.",
+      "switchCameraFailed": "Unable to switch camera.",
+      "genericError": "An unexpected call error occurred."
+    },
+    "actions": {
+      "startAudio": "Start audio call",
+      "startVideo": "Start video call",
+      "contactOffline": "Contact is offline",
+      "cancelCall": "Cancel call",
+      "decline": "Decline",
+      "answer": "Answer",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "cameraOn": "Camera on",
+      "cameraOff": "Camera off",
+      "switchCamera": "Switch camera",
+      "endCall": "End call",
+      "close": "Close",
+      "minimize": "Minimize",
+      "maximize": "Maximize"
+    }
+  },
+  "profile": {
+    "bio": {
+      "title": "个人简介",
+      "empty": "暂无个人简介。",
+      "edit": {
+        "title": "编辑个人简介"
+      }
+    }
+  },
+  "stats": {
+    "member_since": "注册时间",
+    "last_active": "上次活跃"
+  }
+}

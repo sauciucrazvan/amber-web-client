@@ -1,0 +1,538 @@
+{
+  "common": {
+    "help": "Ajutor",
+    "info": "Informații",
+    "show": "Afișează",
+    "hide": "Ascunde",
+    "submit": "Trimite",
+    "cancel": "Anulează",
+    "confirm": "Confirm",
+    "remove": "Remove",
+    "block": "Block",
+    "delete": "Delete",
+    "verified": "Verificat",
+    "unverified": "Te rugăm să-ți verifici mai întâi contul!",
+    "errors": {
+      "too_many_requests": "Prea multe cereri! Încetinește!"
+    },
+    "connection": {
+      "failed": "Conectarea la serverul selectat a eșuat."
+    },
+    "online": "Online",
+    "offline": "Offline"
+  },
+  "login": {
+    "registerPrompt": "Nu ai cont?",
+    "registerLink": "Înregistrează-te",
+    "title": "Autentifică-te în contul tău",
+    "subtitle": "Introdu datele de mai jos pentru a te autentifica",
+    "usernamePlaceholder": "Numele tău de utilizator",
+    "passwordPlaceholder": "Parola ta",
+    "forgotPassword": "Ai uitat parola?",
+    "fillInput": "Completează câmpurile",
+    "incorrectCredentials": "Nume de utilizator sau parolă incorecte.",
+    "greeting": "Bine ai revenit!",
+    "account_disabled": "Acest cont a fost șters.",
+    "recovery": {
+      "title": "Recuperează-ți parola",
+      "description": "Poți face o cerere la fiecare 30 de minute.",
+      "username": "Nume de utilizator",
+      "code": "Cod de recuperare",
+      "password": "Parola nouă",
+      "invalid_username": "Nume de utilizator invalid",
+      "invalid_code": "Codul pe care l-ai introdus a expirat sau este invalid.",
+      "invalid_password": "Parolă invalidă",
+      "locked": "Recuperarea parolei este temporar blocată. Te rugăm să încerci din nou mai târziu.",
+      "too_soon": "Poți cere o schimbare de parolă la fiecare 30 de minute.",
+      "too_late": "Codul pe care l-ai folosit a expirat deja. Cere o nouă schimbare de parolă.",
+      "different_passwords": "Parolele nu se potrivesc.",
+      "sent": "Codul de recuperare a fost trimis la e-mailul tău. Te rog să-ți verifica inboxul (și spam!).",
+      "success": "Ți-ai schimbat cu succes parola. Te rog să te autentifici.",
+      "action": {
+        "next": "Înainte",
+        "finish": "Gata",
+        "back": "Înapoi"
+      }
+    }
+  },
+  "register": {
+    "loginPrompt": "Ai deja cont?",
+    "loginLink": "Autentifică-te",
+    "title": "Creează un cont",
+    "subtitle": "Introdu datele de mai jos pentru a-ți crea contul",
+    "usernamePlaceholder": "Nume de utilizator unic",
+    "usernameHint": "Sunt permise doar litere și cifre.",
+    "fullnamePlaceholder": "Nume afișat",
+    "emailPlaceholder": "Adresa ta de email",
+    "emailHint": "Vom folosi asta pentru a-ți verifica contul",
+    "passwordPlaceholder": "Introdu parola",
+    "passwordHint": "Parola trebuie să aibă cel puțin 8 caractere",
+    "createAccount": "Creează-ți contul",
+    "terms": "Continuând, ești de acord cu <terms>Termenii de utilizare</terms> și <privacy>Politica de confidențialitate</privacy>.",
+    "fillInput": "Completează câmpurile",
+    "invalidUsername": "Nume de utilizator invalid. Nu trebuie să conțină spații sau caractere speciale. Lungimea maximă este 16.",
+    "invalidPassword": "Parolă invalidă. Trebuie să aibă cel puțin 8 caractere, cel puțin o literă mică, o literă mare și o cifră.",
+    "nameRequired": "Numele complet este obligatoriu.",
+    "emailRequired": "Emailul este obligatoriu",
+    "invalidName": "Numele complet trebuie să conțină prenumele și numele de familie.",
+    "invalidEmail": "Email invalid.",
+    "emailTaken": "Email deja înregistrat!",
+    "usernameTaken": "Numele de utilizator este deja folosit.",
+    "greeting": "Bun venit în Amber!",
+    "verify": {
+      "title": "Verifică-ți contul",
+      "description": {
+        "step_one": "Îți vom trimite un e-mail cu un cod de verificare.",
+        "step_two": "Te rugăm să introduci codul pe care l-am trimis pe e-mail."
+      },
+      "not_verified": "Contul tău nu este verificat.",
+      "verify_now": "Verifică acum",
+      "already_verified": "Ești deja verificat",
+      "too_soon": "Un e-mail de verificare a fost deja trimis. Încearcă din nou în 30 de minute.",
+      "email_sent": "Un e-mail de verificare a fost trimis. Te rog să-ți verifica inboxul (și spam!).",
+      "invalid_code": "Codul pe care l-ai furnizat este invalid",
+      "too_late": "Codul tău de verificare a expirat, încearcă din nou.",
+      "locked": "Contul tău este temporar blocat din cauza prea multor încercări eșuate. Te rugăm să încerci din nou mai târziu.",
+      "success": "Contul tău este verificat. Ar putea dura puțin timp pentru a se actualiza.",
+      "action": {
+        "back": "Înapoi",
+        "finish": "Verifică",
+        "next": "Trimite"
+      }
+    }
+  },
+  "legal": {
+    "terms": {
+      "title": "Termeni și condiții",
+      "description": "Te rugăm să revizuiești termenii și condițiile înainte de a folosi Amber.",
+      "content": "1. Acceptarea Termenilor\\nPrin crearea unui cont și accesarea Amber, ești de acord că ești obligat de acești Termeni și Condiții. Dacă nu ești de acord cu orice parte a acestor termeni, nu poți folosi serviciul.\\n\\n2. Responsabilități Utilizator\\nEști responsabil pentru menținerea confidențialității datelor tale de cont și pentru toate activitățile care au loc sub contul tău. Te angajezi să folosești Amber doar în scopuri legale și într-un mod care nu încalcă drepturile altora.\\n\\n3. Conduita Utilizatorului\\nAccepți să nu hărțui, ameninți sau dăunezi altor utilizatori. Conținutul abuziv, ofensator sau inadecvat este strict interzis. Orice încălcare poate duce la suspendarea sau închiderea contului fără notificare.\\n\\n4. Modificări Serviciu\\nNe rezervăm dreptul de a modifica sau întrerupe Amber, în totalitate sau parțial, în orice moment fără notificare. Nu suntem răspunzători pentru orice modificare, suspendare sau întrerupere a serviciului.\\n\\n5. Limitarea Răspunderii\\nÎn toată măsura permisă de lege, Amber și creatorii săi nu sunt răspunzători pentru daunele indirecte, accidentale, speciale, consecutive sau punitive rezultate din utilizare.\\n\\n6. Modificări ale Termenilor\\nPoate fi nevoie să actualizez acești termeni în orice moment. Utilizarea continuă a Amber după orice modificări constituie acceptarea noilor termeni. Te încurajez să revizuiești periodic.\\n\\n7. Rezilierea\\nNe rezervăm dreptul să reziliem sau să suspendam contul tău în orice moment pentru încălcări ale acestor termeni sau pentru orice motiv considerat necesar pentru a proteja integritatea serviciului."
+    },
+    "privacy": {
+      "title": "Politica de confidențialitate",
+      "description": "Te rugăm să revizuiești modul în care Amber gestionează și protejează datele tale.",
+      "content": "Colectăm doar informațiile necesare pentru funcționarea Amber, precum date de cont și date de utilizare necesare funcțiilor de bază. Îți protejăm datele și nu vindem informații personale."
+    }
+  },
+  "settings": {
+    "title": "Setări",
+    "description": "Setările aplicației",
+    "tabs": {
+      "general": "General",
+      "appearance": "Aspect",
+      "devices": "Dispozitive",
+      "account": "Cont",
+      "about": "Despre"
+    },
+    "general": {
+      "language": {
+        "title": "Limbă",
+        "description": "Alege limba aplicației",
+        "options": {
+          "en": "Engleză",
+          "ro": "Română",
+          "de": "Germană",
+          "fr": "Franceză",
+          "es": "Spaniolă",
+          "zh": "Chineză",
+          "ja": "Japoneză",
+          "it": "Italiană"
+        }
+      },
+      "tray": {
+        "title": "Minimizează în tray",
+        "description": "Când este dezactivat, închiderea aplicației o va opri."
+      },
+      "startOnBoot": {
+        "title": "Pornește la pornirea sistemului",
+        "description": "Lansează Amber automat când te autentifici."
+      },
+      "devices": {
+        "microphone": {
+          "title": "Microfon",
+          "description": "Selectează microfonul implicit pentru apeluri.",
+          "empty": "Nu au fost găsite microfoane",
+          "fallback": "Microfon {{index}}"
+        },
+        "camera": {
+          "title": "Cameră",
+          "description": "Selectează camera implicită pentru apeluri.",
+          "empty": "Nu au fost găsite camere",
+          "fallback": "Cameră {{index}}"
+        },
+        "speaker": {
+          "title": "Difuzor",
+          "description": "Selectează difuzorul implicit pentru apeluri.",
+          "empty": "Nu au fost găsite difuzoare",
+          "fallback": "Difuzor {{index}}"
+        }
+      },
+      "help": {
+        "title": "Ajutor",
+        "description": "Ai găsit o problemă sau ai nevoie de ajutor cu ceva?",
+        "action": "Suport"
+      },
+      "feedback": {
+        "title": "Feedback",
+        "description": "Ajută-ne să ne îmbunătățim",
+        "action": "Feedback"
+      }
+    },
+    "appearance": {
+      "theme": {
+        "title": "Temă",
+        "description": "Schimbă tema întregii aplicații."
+      },
+      "scaling": {
+        "title": "Scalare",
+        "description": "Afișează mai mult conținut pe ecran.",
+        "label": "Scalare",
+        "defaultSuffix": "(implicit)"
+      },
+      "sidebarPosition": {
+        "title": "Poziția barei laterale",
+        "description": "Schimbă poziția barei laterale",
+        "label": "Poziții",
+        "options": {
+          "left": "Stânga",
+          "right": "Dreapta"
+        }
+      }
+    },
+    "account": {
+      "details": {
+        "title": "Detalii cont",
+        "description": "Profilul tau public si identitatea de autentificare."
+      },
+      "signOut": {
+        "title": "Deconectare",
+        "description": "Ești sigur că vrei să te deconectezi? Vei fi redirecționat către pagina de autentificare.",
+        "action": "Deconectare",
+        "toast": "Te-ai deconectat cu succes"
+      },
+      "delete": {
+        "title": "Șterge contul",
+        "description": "Îți șterge permanent toate datele. Această acțiune nu poate fi anulată de suport.",
+        "action": "Șterge",
+        "toast": "Ți-ai șters contul cu succes"
+      },
+      "data": {
+        "title": "Solicită date personale",
+        "description": "Solicită toate datele pe care le avem despre tine",
+        "action": "Solicită",
+        "too_soon": "Poți solicita datele tale în fiecare săptămână.",
+        "toast": "Datele pe care le-ai solicitat au fost trimise la e-mailul tău. Te rog să-ți verifica inboxul (și spam!)"
+      },
+      "password": {
+        "title": "Schimbă parola",
+        "description": "Modifică parola. Reține: trebuie să folosești cel puțin o literă mică și una mare, un număr și un caracter special.",
+        "action": "Schimbă",
+        "different": "Parolele nu se potrivesc.",
+        "updated": "Parola a fost actualizată cu succes.",
+        "current_password": "Parola curentă",
+        "new_password": "Parola nouă",
+        "new_password_confirmation": "Confirmare parolă nouă"
+      },
+      "email": {
+        "title": "Schimbă emailul",
+        "description": "Schimbă emailul contului tău. Asigură-te că este valid.",
+        "request_description": "Introdu noul email și parola. Îți vom trimite coduri de verificare pentru a confirma și finaliza schimbarea.",
+        "confirm_description": "Introdu codul de confirmare pentru a continua.",
+        "verify_description": "Introdu codul de verificare pentru a finaliza schimbarea emailului.",
+        "confirm_code": "Cod de confirmare",
+        "verify_code": "Cod de verificare",
+        "same": "Nu poți schimba emailul în cel curent.",
+        "no_pending": "Nu există o cerere de schimbare a emailului în așteptare.",
+        "not_confirmed": "Schimbarea emailului nu a fost încă confirmată.",
+        "already_confirmed": "Schimbarea emailului a fost deja confirmată.",
+        "too_late": "Codul de verificare a expirat. Te rog încearcă din nou.",
+        "locked": "Schimbările de email sunt temporar blocate din cauza prea multor încercări eșuate. Te rugăm să încerci din nou mai târziu.",
+        "too_soon": "Poți solicita o nouă schimbare de email la fiecare jumătate de oră.",
+        "invalid_code": "Cod de verificare invalid.",
+        "verify_sent": "Un cod de verificare a fost trimis la emailul tău. Te rog să-ți verifica inboxul (și spam!)",
+        "updated": "Adresa de email a fost actualizată cu succes!"
+      },
+      "name": {
+        "title": "Schimbă numele afișat",
+        "description": "Această acțiune este disponibilă doar o dată pe săptămână.",
+        "action": "Schimbă",
+        "same": "Nu poți actualiza numele complet cu cel curent.",
+        "updated": "Numele complet a fost actualizat cu succes. Următoarea schimbare este disponibilă peste o săptămână.",
+        "tooSoon": "Ai atins limita de schimbări. Vei putea modifica numele în <time>{{days}}</time> zile."
+      },
+      "manage": {
+        "title": "Gestionează detaliile contului",
+        "short_title": "Manage",
+        "description": "Actualizează numele afișat, emailul și parola dintr-un singur loc."
+      },
+      "general": {
+        "title": "Setari generale",
+        "description": "Confidentialitate, siguranta si gestionarea datelor."
+      },
+      "actions": {
+        "title": "Acțiuni"
+      },
+      "bio": {
+        "too_long": "Limitează-te la 256 de caractere.",
+        "updated": "Biografia ta a fost actualizată cu succes!"
+      },
+      "avatar": {
+        "uploaded": "Avatar uploaded successfully!",
+        "error": "Failed to upload avatar. Please try again.",
+        "confirm": {
+          "title": "Upload Avatar",
+          "description": "Are you sure you want to use this image as your avatar?",
+          "upload": "Upload"
+        }
+      }
+    },
+    "about": {
+      "tabs": {
+        "about": "Despre",
+        "data_for_nerds": "Date pentru pasionați",
+        "updates": "Actualizări",
+        "developer": "Dezvoltator"
+      },
+      "buildNumber": "Numărul versiunii",
+      "platform": "Platformă",
+      "electron": "Electron",
+      "chromium": "Chromium",
+      "updatesLabel": "Actualizări",
+      "updaterUnavailable": "Starea actualizatorului nu este disponibilă.",
+      "unableToReadUpdaterStatus": "Nu s-a putut citi starea actualizatorului.",
+      "developer": {
+        "server": "Server",
+        "debugOnly": "Doar builduri de debug",
+        "selectServer": "Selectează un server",
+        "unableToLoad": "Nu s-a putut încărca configurația serverului.",
+        "unableToApply": "Nu s-a putut aplica serverul selectat."
+      },
+      "downloadedProgress": "{{progress}}% descărcat",
+      "actions": {
+        "check": "Verifică actualizările",
+        "checking": "Se verifică...",
+        "restart": "Repornește pentru a actualiza"
+      },
+      "status": {
+        "idle": "Inactiv",
+        "disabled": "Dezactivat",
+        "checking": "Se verifică actualizările",
+        "available": "Actualizare disponibilă",
+        "not-available": "La zi",
+        "downloading": "Se descarcă",
+        "downloaded": "Gata de instalare",
+        "error": "Eroare"
+      }
+    }
+  },
+  "contacts": {
+    "title": "Contacte",
+    "none": "Nu ai încă contacte",
+    "failed_loading": "Nu s-au putut încărca contactele",
+    "profile": "Profil",
+    "block": "Blochează",
+    "remove": "Elimină",
+    "invalid_user": "Nu am găsit nicio potrivire pentru {{user}}.",
+    "not_found": "Nu am putut găsi contactul.",
+    "removed": "Contact eliminat cu succes.",
+    "yourself": "Nu poți efectua această acțiune asupra ta.",
+    "not_blocked": "Acest utilizator nu este blocat.",
+    "unblock": "Deblochează",
+    "unblocked": "L-ai deblocat cu succes pe {{user}}.",
+    "already_added": "{{user}} este deja în lista ta.",
+    "not_added": "{{user}} nu este în lista ta de contacte.",
+    "already_requested": "Ai trimis deja o cerere către {{user}}.",
+    "requested": "Succes! Cererea ta de prietenie către {{user}} a fost trimisă.",
+    "no_request": "Nu ai trimis o cerere către {{user}}.",
+    "accepted": "Acum ești prieten cu {{user}}.",
+    "declined": "Ai refuzat cererea lui {{user}}.",
+    "removeConfirm": {
+      "title": "Remove Contact",
+      "description": "Are you sure you want to remove {{user}} from your contacts?"
+    },
+    "blockConfirm": {
+      "title": "Block Contact",
+      "description": "Are you sure you want to block {{user}}? You won't be able to chat with them and they won't be able to contact you."
+    },
+    "last_message": {
+      "attachment": "Atasament",
+      "call": "Apel",
+      "unknown": "Mesaj"
+    },
+    "add": {
+      "title": "Adaugă un contact",
+      "description": "Poți adăuga contacte folosind numele lor de utilizator Amber.",
+      "action": "Adaugă",
+      "username": "Nume de utilizator"
+    },
+    "requests": {
+      "title": "Cereri",
+      "description": "Acceptă sau refuză cererile de prietenie pe care le-ai primit.",
+      "none": "Nu ai primit cereri în acest moment",
+      "accept": "Acceptă",
+      "decline": "Refuză",
+      "notification": "<b>@{{user}}</b> vrea să fie prietenul tău."
+    },
+    "blocked": {
+      "unreachable": "Acest utilizator nu poate fi contactat. Verifică dacă l-ai blocat.",
+      "trigger": "Gestionează contactele blocate",
+      "title": "Contacte blocate",
+      "description": "Gestionează contactele pe care le-ai blocat.",
+      "none": "Nu ai contacte blocate",
+      "success": "L-ai blocat cu succes pe {{user}}."
+    }
+  },
+  "account": {
+    "verify": {
+      "notice": "Verifică-ți contul pentru a debloca toate funcționalitățile."
+    }
+  },
+  "homepage": {
+    "get_started": "Începe",
+    "conversation": {
+      "title": "Începe o conversație",
+      "get_started_description": "Trei pași rapizi pentru a începe prima conversație.",
+      "add_contacts": "Adaugă contacte",
+      "add_contacts_hint": "Deschide fluxul de adăugare a contactelor pentru a invita pe cineva după numele de utilizator.",
+      "select": "Alege contact",
+      "select_hint": "Alege un contact din bara laterală pentru a deschide chatul.",
+      "message": "Trimite mesaj",
+      "message_hint": "Scrie mesajul și trimite-l când ești gata."
+    },
+    "file": "Trimite un fișier"
+  },
+  "conversations": {
+    "you": "Tu",
+    "edited": "Editat",
+    "history": {
+      "title": "Istoric editări",
+      "description": "Versiunile anterioare ale acestui mesaj.",
+      "empty": "Nu există versiuni anterioare disponibile."
+    },
+    "no_messages": "Niciun mesaj momentan.",
+    "type_message": "Scrie un mesaj",
+    "send_message": "Trimite mesaj",
+    "close": "Inchide chatul",
+    "actions": {
+      "reply": "Răspunde",
+      "edit": "Editează",
+      "delete": "Șterge"
+    },
+    "deleted_message": "Successfully deleted the message.",
+    "deleteMessage": {
+      "confirm": {
+        "title": "Delete Message",
+        "description": "Are you sure you want to delete this message? This action cannot be undone."
+      }
+    },
+    "error": {
+      "failed_loading": "Failed loading chat",
+      "failed_sending": "Failed sending message",
+      "not_participating": "You are not participating in this conversation.",
+      "too_long": "The message can not exceed 2048 characters.",
+      "invalid_message": "An error occured and we couldn't find the message data. Try again later!",
+      "no_permission": "You do not have permission to do that!",
+      "no_relation": "You are not friends with this users or they've blocked you."
+    }
+  },
+  "calls": {
+    "unknown": "Necunoscut",
+    "badge": {
+      "outgoing": "Apel efectuat",
+      "incoming": "Apel primit",
+      "incomingCall": "Apel primit",
+      "incomingAudioCall": "Apel audio primit",
+      "incomingVideoCall": "Apel video primit",
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "status": {
+      "rejected": "Apel respins",
+      "missed": "Apel ratat",
+      "failed": "Apel eșuat",
+      "ended": "Apel încheiat"
+    },
+    "outgoing": {
+      "waiting": "Se așteaptă răspunsul celeilalte persoane..."
+    },
+    "inProgress": {
+      "waitingRemoteVideo": "Se așteaptă video de la celălalt participant...",
+      "cameraOff": "Camera este oprită",
+      "noCamera": "Fără cameră",
+      "speaker": "Difuzor"
+    },
+    "ended": {
+      "duration": "Durata apelului: {{duration}}"
+    },
+    "history": {
+      "title": "Istoric apeluri",
+      "empty": "Niciun apel încă",
+      "failedLoading": "Încărcarea istoricului apelurilor a eșuat",
+      "relative": {
+        "now": "acum",
+        "minutesAgo": "acum {{count}} min",
+        "hoursAgo": "acum {{count}} h",
+        "daysAgo": "acum {{count}} zile",
+        "weeksAgo": "acum {{count}} săpt"
+      },
+      "reasons": {
+        "timeout": "Timp expirat",
+        "canceled": "Anulat",
+        "cancelled": "Anulat",
+        "no_answer": "Fără răspuns",
+        "busy": "Ocupat"
+      },
+      "previousPage": "Pagina anterioară",
+      "nextPage": "Pagina următoare",
+      "page": "Pagina {{current}} / {{total}}"
+    },
+    "logs": {
+      "initiated": "A început un apel",
+      "initiatedWithActor": "{{actor}} a început un apel",
+      "accepted": "A acceptat apelul",
+      "acceptedWithActor": "{{actor}} a acceptat apelul",
+      "rejected": "A respins apelul",
+      "rejectedWithActor": "{{actor}} a respins apelul",
+      "missed": "Apel ratat",
+      "finished": "A încheiat apelul",
+      "finishedWithActor": "{{actor}} a încheiat apelul"
+    },
+    "toasts": {
+      "contactOffline": "Acest contact este offline.",
+      "mediaAccessFailed": "Nu s-a putut accesa camera/microfonul.",
+      "connectionUnavailable": "Conexiune indisponibilă. Te rugăm să încerci din nou.",
+      "initializeFailed": "Inițializarea apelului video a eșuat.",
+      "switchCameraFailed": "Nu s-a putut schimba camera.",
+      "genericError": "A apărut o eroare neașteptată la apel."
+    },
+    "actions": {
+      "startAudio": "Pornește apel audio",
+      "startVideo": "Pornește apel video",
+      "contactOffline": "Contactul este offline",
+      "cancelCall": "Anulează apelul",
+      "decline": "Respinge",
+      "answer": "Răspunde",
+      "mute": "Dezactivează microfonul",
+      "unmute": "Activează microfonul",
+      "cameraOn": "Pornește camera",
+      "cameraOff": "Oprește camera",
+      "switchCamera": "Schimbă camera",
+      "endCall": "Încheie apelul",
+      "close": "Închide",
+      "minimize": "Minimizează",
+      "maximize": "Maximizează"
+    }
+  },
+  "profile": {
+    "bio": {
+      "title": "Biografie",
+      "empty": "Biografie goală.",
+      "edit": {
+        "title": "Editează biografia"
+      }
+    }
+  },
+  "stats": {
+    "member_since": "Membru din",
+    "last_active": "Ultima activitate"
+  }
+}

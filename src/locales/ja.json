@@ -1,0 +1,538 @@
+{
+  "common": {
+    "help": "ヘルプ",
+    "info": "情報",
+    "show": "表示",
+    "hide": "非表示",
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "confirm": "Confirm",
+    "remove": "Remove",
+    "block": "Block",
+    "delete": "Delete",
+    "verified": "認証済み",
+    "unverified": "まずアカウントを認証してください！",
+    "errors": {
+      "too_many_requests": "リクエストが多すぎます。ゆっくりしてください。"
+    },
+    "connection": {
+      "failed": "選択したサーバーへの接続に失敗しました。"
+    },
+    "online": "オンライン",
+    "offline": "オフライン"
+  },
+  "login": {
+    "registerPrompt": "アカウントをお持ちでないですか？",
+    "registerLink": "登録",
+    "title": "アカウントにログイン",
+    "subtitle": "ログインするには認証情報を入力してください",
+    "usernamePlaceholder": "ユーザー名",
+    "passwordPlaceholder": "パスワード",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "fillInput": "入力欄を埋めてください",
+    "incorrectCredentials": "ユーザー名またはパスワードが正しくありません。",
+    "greeting": "おかえりなさい！",
+    "account_disabled": "このアカウントは削除されました。",
+    "recovery": {
+      "title": "パスワードを復旧",
+      "description": "30分ごとにリクエストできます。",
+      "username": "ユーザー名",
+      "code": "復旧コード",
+      "password": "新しいパスワード",
+      "invalid_username": "無効なユーザー名です",
+      "invalid_code": "入力したコードの有効期限が切れているか、無効です。",
+      "invalid_password": "無効なパスワードです",
+      "locked": "パスワード回復は一時的にロックされています。後で試してください。",
+      "too_soon": "パスワード変更のリクエストは30分ごとにできます。",
+      "too_late": "使用したコードは既に期限切れです。新しいパスワード変更をリクエストしてください。",
+      "different_passwords": "パスワードが一致しません。",
+      "sent": "復旧コードがメールに送信されました。受信トレイを確認してください（迷惑メールも確認！）。",
+      "success": "パスワードの変更に成功しました。ログインしてください。",
+      "action": {
+        "next": "次へ",
+        "finish": "完了",
+        "back": "戻る"
+      }
+    }
+  },
+  "register": {
+    "loginPrompt": "すでにアカウントをお持ちですか？",
+    "loginLink": "ログイン",
+    "title": "アカウントを作成",
+    "subtitle": "アカウント作成のために情報を入力してください",
+    "usernamePlaceholder": "一意のユーザー名",
+    "usernameHint": "使用できるのは英数字のみです。",
+    "fullnamePlaceholder": "表示名",
+    "emailPlaceholder": "メールアドレス",
+    "emailHint": "本人確認に使用します",
+    "passwordPlaceholder": "パスワードを入力",
+    "passwordHint": "パスワードは8文字以上である必要があります",
+    "createAccount": "アカウントを作成",
+    "terms": "続行すると、<terms>利用規約</terms>および<privacy>プライバシーポリシー</privacy>に同意したものとみなされます。",
+    "fillInput": "入力欄を埋めてください",
+    "invalidUsername": "無効なユーザー名です。空白や特殊文字は使用できません。最大長は16です。",
+    "invalidPassword": "無効なパスワードです。8文字以上で、小文字1つ、大文字1つ、数字1つ以上が必要です。",
+    "nameRequired": "氏名は必須です。",
+    "emailRequired": "メールアドレスは必須です",
+    "invalidName": "氏名には名と姓を含めてください。",
+    "invalidEmail": "無効なメールアドレスです。",
+    "emailTaken": "メールアドレスは既に登録されています！",
+    "usernameTaken": "ユーザー名は既に使用されています。",
+    "greeting": "Amberへようこそ！",
+    "verify": {
+      "title": "アカウントを確認",
+      "description": {
+        "step_one": "認証コード付きのメールを送信します。",
+        "step_two": "メールで送信したコードを入力してください。"
+      },
+      "not_verified": "アカウントは認証されていません。",
+      "verify_now": "今すぐ認証",
+      "already_verified": "既に認証されています",
+      "too_soon": "認証メールは既に送信されています。30分後に再度お試しください。",
+      "email_sent": "認証メールが送信されました。受信トレイを確認してください（迷惑メールも確認！）。",
+      "invalid_code": "提供されたコードは無効です",
+      "too_late": "認証コードの有効期限が切れています。もう一度お試しください。",
+      "locked": "アカウントは失敗した試行が多すぎるため、一時的にロックされています。後で試してください。",
+      "success": "アカウントが認証されました。アップデートに少し時間がかかる場合があります。",
+      "action": {
+        "back": "戻る",
+        "finish": "認証",
+        "next": "送信"
+      }
+    }
+  },
+  "legal": {
+    "terms": {
+      "title": "利用規約",
+      "description": "Amberを利用する前に、利用規約をご確認ください。",
+      "content": "1. 利用規約の承認\\nアカウントを作成してAmberにアクセスすることで、あなたはこれらの利用規約に拘束されることに同意します。これらの規約のいかなる部分にも同意しない場合、当サービスを利用できません。\\n\\n2. ユーザーの責任\\nあなたはアカウント認証情報の機密性の維持と、あなたのアカウント下で発生するすべてのアクティビティについて責任を負います。Amberを合法的な目的でのみ使用することに同意します。\\n\\n3. ユーザー行為\\nあなたは他のユーザーを嫌がらせ、脅迫、または危害を加えないことに同意します。虐待的、攻撃的、または不適切なコンテンツは厳密に禁止されています。違反があった場合、予告なしにアカウントが停止される可能性があります。\\n\\n4. サービスの変更\\n当社は事前通知なしに、いつでもAmberを修正または中止する権利を保有します。当社はサービスの修正、停止、または中止について責任を負いません。\\n\\n5. 責任の制限\\n法律で許可される最大限の範囲で、Amberおよびその作成者は、当サービスの使用から生じる間接的、特殊的、または懲罰的損害については責任を負いません。\\n\\n6. 利用規約の変更\\n当社はいつでもこれらの規約を更新する権利があります。変更後のAmberの継続的な使用は、新しい規約の承認を構成します。定期的にこの契約を確認することをお勧めします。\\n\\n7. 終了\\n当社は規約違反の場合、またはサービスの完全性を保護するために必要な場合、いつでもあなたのアカウントを終了する権利を保有します。"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー",
+      "description": "Amberがどのようにデータを取り扱い、保護するかをご確認ください。",
+      "content": "Amberの運用に必要な情報のみを収集します。これには、アカウント情報や主要機能に必要な利用データが含まれます。あなたのデータを保護し、個人情報を販売することはありません。"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "description": "アプリの設定",
+    "tabs": {
+      "general": "一般",
+      "appearance": "外観",
+      "devices": "デバイス",
+      "account": "アカウント",
+      "about": "情報"
+    },
+    "general": {
+      "language": {
+        "title": "言語",
+        "description": "アプリの言語を選択してください",
+        "options": {
+          "en": "英語",
+          "ro": "ルーマニア語",
+          "de": "ドイツ語",
+          "fr": "フランス語",
+          "es": "スペイン語",
+          "zh": "中国語",
+          "ja": "日本語",
+          "it": "イタリア語"
+        }
+      },
+      "tray": {
+        "title": "トレイに最小化",
+        "description": "オフにすると、閉じるとアプリが終了します。"
+      },
+      "startOnBoot": {
+        "title": "起動時に開始",
+        "description": "サインイン時に Amber を自動起動します。"
+      },
+      "devices": {
+        "microphone": {
+          "title": "Microphone",
+          "description": "Select the default microphone for calls.",
+          "empty": "No microphones found",
+          "fallback": "Microphone {{index}}"
+        },
+        "camera": {
+          "title": "Camera",
+          "description": "Select the default camera for calls.",
+          "empty": "No cameras found",
+          "fallback": "Camera {{index}}"
+        },
+        "speaker": {
+          "title": "Speaker",
+          "description": "Select the default speaker for calls.",
+          "empty": "No speakers found",
+          "fallback": "Speaker {{index}}"
+        }
+      },
+      "help": {
+        "title": "ヘルプ",
+        "description": "不具合を見つけた、または助けが必要ですか？",
+        "action": "サポート"
+      },
+      "feedback": {
+        "title": "フィードバック",
+        "description": "改善にご協力ください",
+        "action": "フィードバック"
+      }
+    },
+    "appearance": {
+      "theme": {
+        "title": "テーマ",
+        "description": "アプリ全体のテーマを変更します。"
+      },
+      "scaling": {
+        "title": "スケーリング",
+        "description": "画面により多くの内容を表示します。",
+        "label": "スケーリング",
+        "defaultSuffix": "（既定）"
+      },
+      "sidebarPosition": {
+        "title": "サイドバーの位置",
+        "description": "サイドバーの位置を変更します",
+        "label": "位置",
+        "options": {
+          "left": "左",
+          "right": "右"
+        }
+      }
+    },
+    "account": {
+      "details": {
+        "title": "アカウントの詳細",
+        "description": "公開プロフィールとログイン情報。"
+      },
+      "signOut": {
+        "title": "サインアウト",
+        "description": "サインアウトしますか？ログインページにリダイレクトされます。",
+        "action": "サインアウト",
+        "toast": "ログアウトしました"
+      },
+      "delete": {
+        "title": "アカウントを削除",
+        "description": "すべてのデータが完全に削除されます。この操作はサポートでも取り消せません。",
+        "action": "削除",
+        "toast": "アカウントを削除しました"
+      },
+      "data": {
+        "title": "個人データのリクエスト",
+        "description": "あなたに関する当社保有データをすべてリクエストします",
+        "action": "リクエスト",
+        "too_soon": "毎週データをリクエストできます。",
+        "toast": "リクエストされたデータがメールに送信されました。受信トレイを確認してください（迷惑メールも確認！）。"
+      },
+      "password": {
+        "title": "パスワードを変更",
+        "description": "パスワードを変更します。小文字・大文字・数字・特殊文字をそれぞれ1つ以上含めてください。",
+        "action": "変更",
+        "different": "パスワードが一致しません。",
+        "updated": "パスワードを更新しました。",
+        "current_password": "現在のパスワード",
+        "new_password": "新しいパスワード",
+        "new_password_confirmation": "新しいパスワード（確認）"
+      },
+      "email": {
+        "title": "メールアドレスを変更",
+        "description": "アカウントのメールアドレスを変更します。正しいメールアドレスを入力してください。",
+        "request_description": "新しいメールアドレスとパスワードを入力してください。確認と完了のための認証コードを送信します。",
+        "confirm_description": "続行するには確認コードを入力してください。",
+        "verify_description": "メールアドレス変更を完了するには認証コードを入力してください。",
+        "confirm_code": "確認コード",
+        "verify_code": "認証コード",
+        "same": "現在のメールアドレスと同じものには変更できません。",
+        "no_pending": "保留中のメールアドレス変更リクエストはありません。",
+        "not_confirmed": "メールアドレス変更はまだ確認されていません。",
+        "already_confirmed": "メールアドレス変更はすでに確認されています。",
+        "too_late": "認証コードの有効期限が切れました。もう一度やり直してください。",
+        "locked": "メールアドレス変更は失敗した試行が多すぎるため、一時的にロックされています。後で試してください。",
+        "too_soon": "新しいメールアドレス変更は30分ごとにリクエストできます。",
+        "invalid_code": "認証コードが無効です。",
+        "verify_sent": "認証コードをメールに送信しました。受信トレイを確認してください（迷惑メールも確認）。",
+        "updated": "メールアドレスを更新しました！"
+      },
+      "name": {
+        "title": "表示名を変更",
+        "description": "この操作は週に1回のみ利用できます。",
+        "action": "変更",
+        "same": "現在の氏名と同じ氏名には変更できません。",
+        "updated": "表示名を更新しました。次回の変更は1週間後に可能です。",
+        "tooSoon": "変更回数の上限に達しました。<time>{{days}}</time>日後に氏名を変更できます。"
+      },
+      "manage": {
+        "title": "アカウント情報を管理",
+        "short_title": "Manage",
+        "description": "表示名、メールアドレス、パスワードを1か所で更新できます。"
+      },
+      "general": {
+        "title": "一般設定",
+        "description": "プライバシー、安全性、データ管理。"
+      },
+      "actions": {
+        "title": "アクション"
+      },
+      "bio": {
+        "too_long": "256文字以内で入力してください。",
+        "updated": "自己紹介を更新しました！"
+      },
+      "avatar": {
+        "uploaded": "Avatar uploaded successfully!",
+        "error": "Failed to upload avatar. Please try again.",
+        "confirm": {
+          "title": "Upload Avatar",
+          "description": "Are you sure you want to use this image as your avatar?",
+          "upload": "Upload"
+        }
+      }
+    },
+    "about": {
+      "tabs": {
+        "about": "情報",
+        "data_for_nerds": "技術情報",
+        "updates": "更新",
+        "developer": "開発者"
+      },
+      "buildNumber": "ビルド番号",
+      "platform": "プラットフォーム",
+      "electron": "Electron",
+      "chromium": "Chromium",
+      "updatesLabel": "更新",
+      "updaterUnavailable": "アップデーターの状態を取得できません。",
+      "unableToReadUpdaterStatus": "アップデーターの状態を読み取れません。",
+      "developer": {
+        "server": "Server",
+        "debugOnly": "デバッグビルドのみ",
+        "selectServer": "サーバーを選択",
+        "unableToLoad": "サーバー設定を読み込めません。",
+        "unableToApply": "選択したサーバーを適用できません。"
+      },
+      "downloadedProgress": "{{progress}}% ダウンロード済み",
+      "actions": {
+        "check": "更新を確認",
+        "checking": "確認中...",
+        "restart": "更新するため再起動"
+      },
+      "status": {
+        "idle": "待機中",
+        "disabled": "無効",
+        "checking": "更新を確認中",
+        "available": "更新があります",
+        "not-available": "最新です",
+        "downloading": "ダウンロード中",
+        "downloaded": "インストール準備完了",
+        "error": "エラー"
+      }
+    }
+  },
+  "contacts": {
+    "title": "連絡先",
+    "none": "まだ連絡先がありません",
+    "failed_loading": "連絡先の読み込みに失敗しました",
+    "profile": "プロフィール",
+    "block": "ブロック",
+    "remove": "削除",
+    "invalid_user": "{{user}} に一致するユーザーが見つかりませんでした。",
+    "not_found": "連絡先が見つかりませんでした。",
+    "removed": "連絡先を削除しました。",
+    "yourself": "自分自身にはこの操作を実行できません。",
+    "not_blocked": "このユーザーはブロックされていません。",
+    "unblock": "ブロック解除",
+    "unblocked": "{{user}} のブロックを解除しました。",
+    "already_added": "{{user}} はすでにリストに追加されています。",
+    "not_added": "{{user}} は連絡先リストにいません。",
+    "already_requested": "{{user}} にはすでにリクエストを送信しています。",
+    "requested": "成功！{{user}} への友達申請を送信しました。",
+    "no_request": "{{user}} へのリクエストを送信していません。",
+    "accepted": "{{user}} と友達になりました。",
+    "declined": "{{user}} からのリクエストを拒否しました。",
+    "removeConfirm": {
+      "title": "Remove Contact",
+      "description": "Are you sure you want to remove {{user}} from your contacts?"
+    },
+    "blockConfirm": {
+      "title": "Block Contact",
+      "description": "Are you sure you want to block {{user}}? You won't be able to chat with them and they won't be able to contact you."
+    },
+    "last_message": {
+      "attachment": "添付ファイル",
+      "call": "通話",
+      "unknown": "メッセージ"
+    },
+    "add": {
+      "title": "連絡先を追加",
+      "description": "Amber のユーザー名を使って連絡先を追加できます。",
+      "action": "追加",
+      "username": "ユーザー名"
+    },
+    "requests": {
+      "title": "リクエスト",
+      "description": "受信した友達申請を承認または拒否できます。",
+      "none": "現在受信したリクエストはありません",
+      "accept": "承認",
+      "decline": "拒否",
+      "notification": "<b>@{{user}}</b> があなたと友達になりたいと言っています。"
+    },
+    "blocked": {
+      "unreachable": "このユーザーに接続できません。ブロックしていないか確認してください。",
+      "trigger": "ブロックした連絡先を管理",
+      "title": "ブロックした連絡先",
+      "description": "ブロックした連絡先を管理します。",
+      "none": "ブロックした連絡先はありません",
+      "success": "{{user}} をブロックしました。"
+    }
+  },
+  "account": {
+    "verify": {
+      "notice": "すべての機能を利用するには、アカウントを認証してください。"
+    }
+  },
+  "homepage": {
+    "get_started": "はじめる",
+    "conversation": {
+      "title": "会話を始める",
+      "get_started_description": "最初の会話を始めるための3つの簡単な手順です。",
+      "add_contacts": "連絡先を追加",
+      "add_contacts_hint": "連絡先を追加して、ユーザー名で相手を招待します。",
+      "select": "連絡先を選択",
+      "select_hint": "サイドバーから連絡先を選ぶと、チャットが開きます。",
+      "message": "メッセージを送信",
+      "message_hint": "メッセージを入力して、準備ができたら送信してください。"
+    },
+    "file": "ファイルを送信"
+  },
+  "conversations": {
+    "you": "あなた",
+    "edited": "編集済み",
+    "history": {
+      "title": "編集履歴",
+      "description": "このメッセージの以前のバージョンです。",
+      "empty": "以前のバージョンはありません。"
+    },
+    "no_messages": "まだメッセージはありません。",
+    "type_message": "メッセージを入力",
+    "send_message": "メッセージを送信",
+    "close": "チャットを閉じる",
+    "actions": {
+      "reply": "返信",
+      "edit": "編集",
+      "delete": "削除"
+    },
+    "deleted_message": "Successfully deleted the message.",
+    "deleteMessage": {
+      "confirm": {
+        "title": "Delete Message",
+        "description": "Are you sure you want to delete this message? This action cannot be undone."
+      }
+    },
+    "error": {
+      "failed_loading": "Failed loading chat",
+      "failed_sending": "Failed sending message",
+      "not_participating": "You are not participating in this conversation.",
+      "too_long": "The message can not exceed 2048 characters.",
+      "invalid_message": "An error occured and we couldn't find the message data. Try again later!",
+      "no_permission": "You do not have permission to do that!",
+      "no_relation": "You are not friends with this users or they've blocked you."
+    }
+  },
+  "calls": {
+    "unknown": "Unknown",
+    "badge": {
+      "outgoing": "Outgoing call",
+      "incoming": "Incoming call",
+      "incomingCall": "Incoming call",
+      "incomingAudioCall": "Incoming audio call",
+      "incomingVideoCall": "Incoming video call",
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "status": {
+      "rejected": "Call rejected",
+      "missed": "Missed call",
+      "failed": "Call failed",
+      "ended": "Call ended"
+    },
+    "outgoing": {
+      "waiting": "Waiting for the other person to answer..."
+    },
+    "inProgress": {
+      "waitingRemoteVideo": "Waiting for remote video...",
+      "cameraOff": "Camera is turned off",
+      "noCamera": "No camera",
+      "speaker": "Speaker"
+    },
+    "ended": {
+      "duration": "Call duration: {{duration}}"
+    },
+    "history": {
+      "title": "Call history",
+      "empty": "No calls yet",
+      "failedLoading": "Failed loading call history",
+      "relative": {
+        "now": "たった今",
+        "minutesAgo": "{{count}}分前",
+        "hoursAgo": "{{count}}時間前",
+        "daysAgo": "{{count}}日前",
+        "weeksAgo": "{{count}}週間前"
+      },
+      "reasons": {
+        "timeout": "タイムアウト",
+        "canceled": "キャンセル",
+        "cancelled": "キャンセル",
+        "no_answer": "応答なし",
+        "busy": "通話中"
+      },
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "page": "Page {{current}} / {{total}}"
+    },
+    "logs": {
+      "initiated": "Started a call",
+      "initiatedWithActor": "{{actor}} started a call",
+      "accepted": "Accepted the call",
+      "acceptedWithActor": "{{actor}} accepted the call",
+      "rejected": "Rejected the call",
+      "rejectedWithActor": "{{actor}} rejected the call",
+      "missed": "Missed call",
+      "finished": "Finished the call",
+      "finishedWithActor": "{{actor}} finished the call"
+    },
+    "toasts": {
+      "contactOffline": "This contact is offline.",
+      "mediaAccessFailed": "Could not access camera/microphone.",
+      "connectionUnavailable": "Connection unavailable. Please try again.",
+      "initializeFailed": "Failed to initialize video call.",
+      "switchCameraFailed": "Unable to switch camera.",
+      "genericError": "An unexpected call error occurred."
+    },
+    "actions": {
+      "startAudio": "Start audio call",
+      "startVideo": "Start video call",
+      "contactOffline": "Contact is offline",
+      "cancelCall": "Cancel call",
+      "decline": "Decline",
+      "answer": "Answer",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "cameraOn": "Camera on",
+      "cameraOff": "Camera off",
+      "switchCamera": "Switch camera",
+      "endCall": "End call",
+      "close": "Close",
+      "minimize": "Minimize",
+      "maximize": "Maximize"
+    }
+  },
+  "profile": {
+    "bio": {
+      "title": "自己紹介",
+      "empty": "自己紹介は未設定です。",
+      "edit": {
+        "title": "自己紹介を編集"
+      }
+    }
+  },
+  "stats": {
+    "member_since": "参加日",
+    "last_active": "最終アクティブ"
+  }
+}

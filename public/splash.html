@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starting Amber</title>
+    <style>
+      :root {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: transparent;
+        color: hsl(var(--foreground));
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        display: grid;
+        place-items: center;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .card {
+        width: 360px;
+        padding: 40px 24px;
+        background-color: hsl(var(--card));
+        border: 1px solid hsl(var(--border));
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .text-container {
+        text-align: center;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        margin-bottom: 8px;
+      }
+
+      .status {
+        font-size: 13px;
+        color: hsl(var(--muted-foreground));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
+
+      .pulse-dot {
+        width: 4px;
+        height: 4px;
+        background-color: hsl(var(--muted-foreground));
+        border-radius: 50%;
+        animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      .dot-2 { animation-delay: 0.2s; }
+      .dot-3 { animation-delay: 0.4s; }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="card">
+      <img src="./amber.png" width="64" height="64" />
+      
+      <div class="text-container">
+        <div class="title">Amber</div>
+        <div class="status">
+          Starting application
+          <span style="display: flex; gap: 3px; margin-left: 4px;">
+            <span class="pulse-dot"></span>
+            <span class="pulse-dot dot-2"></span>
+            <span class="pulse-dot dot-3"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

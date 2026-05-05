@@ -1,0 +1,538 @@
+{
+  "common": {
+    "help": "Ayuda",
+    "info": "Información",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "confirm": "Confirm",
+    "remove": "Remove",
+    "block": "Block",
+    "delete": "Delete",
+    "verified": "Verificado",
+    "unverified": "¡Por favor, verifica tu cuenta primero!",
+    "errors": {
+      "too_many_requests": "¡Demasiadas solicitudes! ¡Ralentízate!"
+    },
+    "connection": {
+      "failed": "La conexión con el servidor seleccionado ha fallado."
+    },
+    "online": "En línea",
+    "offline": "Sin conexión"
+  },
+  "login": {
+    "registerPrompt": "¿No tienes una cuenta?",
+    "registerLink": "Registrarse",
+    "title": "Inicia sesión en tu cuenta",
+    "subtitle": "Introduce tus credenciales para iniciar sesión",
+    "usernamePlaceholder": "Tu nombre de usuario",
+    "passwordPlaceholder": "Tu contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "fillInput": "Rellena los campos",
+    "incorrectCredentials": "Nombre de usuario o contraseña incorrectos.",
+    "greeting": "¡Bienvenido de nuevo!",
+    "account_disabled": "Esta cuenta ha sido eliminada.",
+    "recovery": {
+      "title": "Recupera tu contraseña",
+      "description": "Puedes hacer una solicitud cada 30 minutos.",
+      "username": "Nombre de usuario",
+      "code": "Código de recuperación",
+      "password": "Nueva contraseña",
+      "invalid_username": "Nombre de usuario inválido",
+      "invalid_code": "El código que ingresaste ha expirado o es inválido.",
+      "invalid_password": "Contraseña inválida",
+      "locked": "La recuperación de contraseña está temporalmente bloqueada. Por favor, intenta de nuevo más tarde.",
+      "too_soon": "Puedes solicitar un cambio de contraseña cada 30 minutos.",
+      "too_late": "El código que usaste ya expiró. Solicita un nuevo cambio de contraseña.",
+      "different_passwords": "Las contraseñas no coinciden.",
+      "sent": "El código de recuperación ha sido enviado a tu correo. Por favor, revisa tu bandeja de entrada (¡incluso spam!).",
+      "success": "Has cambiado tu contraseña exitosamente. Por favor, inicia sesión.",
+      "action": {
+        "next": "Siguiente",
+        "finish": "Finalizar",
+        "back": "Atrás"
+      }
+    }
+  },
+  "register": {
+    "loginPrompt": "¿Ya tienes una cuenta?",
+    "loginLink": "Iniciar sesión",
+    "title": "Crear una cuenta",
+    "subtitle": "Introduce tu información para crear tu cuenta",
+    "usernamePlaceholder": "Nombre de usuario único",
+    "usernameHint": "Solo se permiten letras y números.",
+    "fullnamePlaceholder": "Nombre para mostrar",
+    "emailPlaceholder": "Tu correo electrónico",
+    "emailHint": "Lo usaremos para verificarte",
+    "passwordPlaceholder": "Introduce la contraseña",
+    "passwordHint": "La contraseña debe tener al menos 8 caracteres",
+    "createAccount": "Crear tu cuenta",
+    "terms": "Al continuar, aceptas nuestros <terms>Términos de servicio</terms> y nuestra <privacy>Política de privacidad</privacy>.",
+    "fillInput": "Rellena los campos",
+    "invalidUsername": "Nombre de usuario no válido. No debe contener espacios ni caracteres especiales. La longitud máxima es 16.",
+    "invalidPassword": "Contraseña no válida. Debe tener al menos 8 caracteres, al menos una letra minúscula, una mayúscula y un dígito.",
+    "nameRequired": "Se requiere el nombre completo.",
+    "emailRequired": "El correo electrónico es obligatorio",
+    "invalidName": "El nombre completo debe contener tu nombre y apellido.",
+    "invalidEmail": "Correo electrónico no válido.",
+    "emailTaken": "¡El correo electrónico ya está registrado!",
+    "usernameTaken": "El nombre de usuario ya está en uso.",
+    "greeting": "¡Bienvenido a Amber!",
+    "verify": {
+      "title": "Verifica tu cuenta",
+      "description": {
+        "step_one": "Te enviaremos un correo electrónico con un código de verificación.",
+        "step_two": "Introduce el código que te enviamos por correo electrónico."
+      },
+      "not_verified": "Tu cuenta no está verificada.",
+      "verify_now": "Verificar ahora",
+      "already_verified": "Ya estás verificado",
+      "too_soon": "Ya se ha enviado un correo de verificación. Reintenta en 30 minutos.",
+      "email_sent": "Se ha enviado un correo de verificación. Por favor, revisa tu bandeja de entrada (¡incluso spam!).",
+      "invalid_code": "El código que proporcionaste es inválido",
+      "too_late": "Tu código de verificación ya ha expirado, por favor reintenta.",
+      "locked": "Tu cuenta está temporalmente bloqueada debido a demasiados intentos fallidos. Por favor, intenta de nuevo más tarde.",
+      "success": "Tu cuenta está verificada. Podría tomar un momento actualizarse.",
+      "action": {
+        "back": "Atrás",
+        "finish": "Verificar",
+        "next": "Enviar"
+      }
+    }
+  },
+  "legal": {
+    "terms": {
+      "title": "Términos y condiciones",
+      "description": "Por favor, revisa los términos y condiciones antes de usar Amber.",
+      "content": "1. Aceptación de los términos\\nAl crear una cuenta y acceder a Amber, aceptas estar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con ninguna parte de estos términos, no puedes usar el servicio.\\n\\n2. Responsabilidades del usuario\\nEres responsable de mantener la confidencialidad de las credenciales de tu cuenta y de todas las actividades que ocurran bajo tu cuenta. Aceptas usar Amber solo con fines legales y de una manera que no infrinja los derechos de otros usuarios.\\n\\n3. Conducta del usuario\\nAceptas no acosar, amenazar ni dañar a otros usuarios. El contenido abusivo, ofensivo o inapropiado está estrictamente prohibido. Cualquier violación puede resultar en la suspensión o terminación de tu cuenta.\\n\\n4. Modificaciones del servicio\\nNos reservamos el derecho de modificar o descontinuar Amber, en su totalidad o parte, en cualquier momento sin previo aviso. No somos responsables por ninguna modificación, suspensión o interrupción del servicio.\\n\\n5. Limitación de responsabilidad\\nEn la medida máxima permitida por la ley, Amber y sus creadores no son responsables de daños indirectos, incidentales, especiales, consecuentes o punitivos resultantes de tu uso.\\n\\n6. Cambios en los términos\\nPodemos actualizar estos términos en cualquier momento. Tu uso continuo de Amber después de cualquier cambio constituye tu aceptación de los nuevos términos. Te animamos a revisar este acuerdo periódicamente.\\n\\n7. Terminación\\nNos reservamos el derecho de terminar o suspender tu cuenta en cualquier momento por incumplimiento de estos términos o para proteger la integridad de nuestro servicio."
+    },
+    "privacy": {
+      "title": "Política de privacidad",
+      "description": "Por favor, revisa cómo Amber gestiona y protege tus datos.",
+      "content": "Recopilamos solo la información necesaria para operar Amber, como datos de la cuenta y datos de uso requeridos para las funciones principales. Protegemos tus datos y no vendemos información personal."
+    }
+  },
+  "settings": {
+    "title": "Ajustes",
+    "description": "Ajustes de la aplicación",
+    "tabs": {
+      "general": "General",
+      "appearance": "Apariencia",
+      "devices": "Dispositivos",
+      "account": "Cuenta",
+      "about": "Acerca de"
+    },
+    "general": {
+      "language": {
+        "title": "Idioma",
+        "description": "Elige el idioma de la aplicación",
+        "options": {
+          "en": "Inglés",
+          "ro": "Rumano",
+          "de": "Alemán",
+          "fr": "Francés",
+          "es": "Español",
+          "zh": "Chino",
+          "ja": "Japonés",
+          "it": "Italiano"
+        }
+      },
+      "tray": {
+        "title": "Minimizar a la bandeja",
+        "description": "Si está desactivado, al cerrar la app se saldrá."
+      },
+      "startOnBoot": {
+        "title": "Iniciar al arrancar",
+        "description": "Inicia Amber automáticamente cuando inicies sesión."
+      },
+      "devices": {
+        "microphone": {
+          "title": "Microphone",
+          "description": "Select the default microphone for calls.",
+          "empty": "No microphones found",
+          "fallback": "Microphone {{index}}"
+        },
+        "camera": {
+          "title": "Camera",
+          "description": "Select the default camera for calls.",
+          "empty": "No cameras found",
+          "fallback": "Camera {{index}}"
+        },
+        "speaker": {
+          "title": "Speaker",
+          "description": "Select the default speaker for calls.",
+          "empty": "No speakers found",
+          "fallback": "Speaker {{index}}"
+        }
+      },
+      "help": {
+        "title": "Ayuda",
+        "description": "¿Encontraste un problema o necesitas ayuda con algo?",
+        "action": "Soporte"
+      },
+      "feedback": {
+        "title": "Comentarios",
+        "description": "Ayúdanos a mejorar",
+        "action": "Comentarios"
+      }
+    },
+    "appearance": {
+      "theme": {
+        "title": "Tema",
+        "description": "Esto cambia el tema de toda la aplicación."
+      },
+      "scaling": {
+        "title": "Escala",
+        "description": "Muestra más contenido en tu pantalla.",
+        "label": "Escala",
+        "defaultSuffix": "(predeterminado)"
+      },
+      "sidebarPosition": {
+        "title": "Posición de la barra lateral",
+        "description": "Cambiar la posición de la barra lateral",
+        "label": "Posiciones",
+        "options": {
+          "left": "Izquierda",
+          "right": "Derecha"
+        }
+      }
+    },
+    "account": {
+      "details": {
+        "title": "Detalles de la cuenta",
+        "description": "Tu perfil publico y tu identidad de inicio de sesion."
+      },
+      "signOut": {
+        "title": "Cerrar sesión",
+        "description": "¿Seguro que quieres cerrar sesión? Serás redirigido a la página de inicio de sesión.",
+        "action": "Cerrar sesión",
+        "toast": "Sesión cerrada correctamente"
+      },
+      "delete": {
+        "title": "Eliminar cuenta",
+        "description": "Elimina permanentemente todos tus datos. Esta acción no puede ser revertida por soporte.",
+        "action": "Eliminar",
+        "toast": "Cuenta eliminada correctamente"
+      },
+      "data": {
+        "title": "Solicitar datos personales",
+        "description": "Solicita todos los datos que tenemos sobre ti",
+        "action": "Solicitar",
+        "too_soon": "Puedes solicitar tus datos cada semana.",
+        "toast": "Tus datos solicitados han sido enviados a tu correo electrónico. Por favor, revisa tu bandeja de entrada (¡incluso spam!)"
+      },
+      "password": {
+        "title": "Cambiar contraseña",
+        "description": "Modifica tu contraseña. Recuerda: debes usar al menos una letra minúscula y una mayúscula, un número y un carácter especial.",
+        "action": "Cambiar",
+        "different": "Las contraseñas no coinciden.",
+        "updated": "Tu contraseña se actualizó correctamente.",
+        "current_password": "Contraseña actual",
+        "new_password": "Nueva contraseña",
+        "new_password_confirmation": "Confirmación de la nueva contraseña"
+      },
+      "email": {
+        "title": "Cambiar correo electrónico",
+        "description": "Cambia el correo electrónico de tu cuenta. Asegúrate de que sea válido.",
+        "request_description": "Introduce tu nuevo correo y contraseña. Te enviaremos códigos de verificación para confirmar y finalizar el cambio.",
+        "confirm_description": "Introduce el código de confirmación para continuar.",
+        "verify_description": "Introduce el código de verificación para finalizar el cambio de correo.",
+        "confirm_code": "Código de confirmación",
+        "verify_code": "Código de verificación",
+        "same": "No puedes cambiar tu correo electrónico por el actual.",
+        "no_pending": "No hay una solicitud de cambio de correo pendiente.",
+        "not_confirmed": "El cambio de correo aún no está confirmado.",
+        "already_confirmed": "El cambio de correo ya está confirmado.",
+        "too_late": "Tu código de verificación ha caducado. Por favor, vuelve a intentarlo.",
+        "locked": "Los cambios de correo electrónico están temporalmente bloqueados debido a demasiados intentos fallidos. Por favor, intenta de nuevo más tarde.",
+        "too_soon": "Puedes solicitar un nuevo cambio de correo cada media hora.",
+        "invalid_code": "Código de verificación inválido.",
+        "verify_sent": "Se envió un código de verificación a tu correo. Revisa tu bandeja de entrada (¡también spam!).",
+        "updated": "¡Correo electrónico actualizado correctamente!"
+      },
+      "name": {
+        "title": "Cambiar nombre para mostrar",
+        "description": "Esta acción solo está disponible una vez por semana.",
+        "action": "Cambiar",
+        "same": "No puedes actualizar el nombre completo al actual.",
+        "updated": "Nombre completo actualizado correctamente. El próximo cambio estará disponible en una semana.",
+        "tooSoon": "Has alcanzado tu límite de cambios. Podrás modificar tu nombre en <time>{{days}}</time> días."
+      },
+      "manage": {
+        "title": "Gestionar datos de la cuenta",
+        "short_title": "Manage",
+        "description": "Actualiza tu nombre para mostrar, correo electrónico y contraseña en un solo lugar."
+      },
+      "general": {
+        "title": "Ajustes generales",
+        "description": "Privacidad, seguridad y gestion de datos."
+      },
+      "actions": {
+        "title": "Acciones"
+      },
+      "bio": {
+        "too_long": "Limítate a 256 caracteres.",
+        "updated": "¡Tu biografía se actualizó correctamente!"
+      },
+      "avatar": {
+        "uploaded": "Avatar uploaded successfully!",
+        "error": "Failed to upload avatar. Please try again.",
+        "confirm": {
+          "title": "Upload Avatar",
+          "description": "Are you sure you want to use this image as your avatar?",
+          "upload": "Upload"
+        }
+      }
+    },
+    "about": {
+      "tabs": {
+        "about": "Acerca de",
+        "data_for_nerds": "Datos para nerds",
+        "updates": "Actualizaciones",
+        "developer": "Desarrollador"
+      },
+      "buildNumber": "Número de compilación",
+      "platform": "Plataforma",
+      "electron": "Electron",
+      "chromium": "Chromium",
+      "updatesLabel": "Actualizaciones",
+      "updaterUnavailable": "Estado del actualizador no disponible.",
+      "unableToReadUpdaterStatus": "No se pudo leer el estado del actualizador.",
+      "developer": {
+        "server": "Server",
+        "debugOnly": "Solo compilaciones de depuración",
+        "selectServer": "Selecciona un servidor",
+        "unableToLoad": "No se pudo cargar la configuración del servidor.",
+        "unableToApply": "No se pudo aplicar el servidor seleccionado."
+      },
+      "downloadedProgress": "{{progress}} % descargado",
+      "actions": {
+        "check": "Buscar actualizaciones",
+        "checking": "Comprobando...",
+        "restart": "Reiniciar para actualizar"
+      },
+      "status": {
+        "idle": "Inactivo",
+        "disabled": "Desactivado",
+        "checking": "Buscando actualizaciones",
+        "available": "Actualización disponible",
+        "not-available": "Actualizado",
+        "downloading": "Descargando",
+        "downloaded": "Listo para instalar",
+        "error": "Error"
+      }
+    }
+  },
+  "contacts": {
+    "title": "Contactos",
+    "none": "Aún no hay contactos",
+    "failed_loading": "No se pudieron cargar los contactos",
+    "profile": "Perfil",
+    "block": "Bloquear",
+    "remove": "Eliminar",
+    "invalid_user": "No se encontró ninguna coincidencia para {{user}}.",
+    "not_found": "No se pudo encontrar el contacto.",
+    "removed": "Contacto eliminado correctamente.",
+    "yourself": "No puedes realizar esta acción contigo mismo.",
+    "not_blocked": "Este usuario no está bloqueado.",
+    "unblock": "Desbloquear",
+    "unblocked": "{{user}} ha sido desbloqueado correctamente.",
+    "already_added": "{{user}} ya está en tu lista.",
+    "not_added": "{{user}} no está en tu lista de contactos.",
+    "already_requested": "Ya enviaste una solicitud a {{user}}.",
+    "requested": "¡Listo! Se ha enviado tu solicitud de amistad a {{user}}.",
+    "no_request": "No enviaste una solicitud a {{user}}.",
+    "accepted": "Ahora eres amigo de {{user}}.",
+    "declined": "Has rechazado la solicitud de {{user}}.",
+    "removeConfirm": {
+      "title": "Remove Contact",
+      "description": "Are you sure you want to remove {{user}} from your contacts?"
+    },
+    "blockConfirm": {
+      "title": "Block Contact",
+      "description": "Are you sure you want to block {{user}}? You won't be able to chat with them and they won't be able to contact you."
+    },
+    "last_message": {
+      "attachment": "Adjunto",
+      "call": "Llamada",
+      "unknown": "Mensaje"
+    },
+    "add": {
+      "title": "Añadir un contacto",
+      "description": "Puedes añadir contactos usando su nombre de usuario de Amber.",
+      "action": "Añadir",
+      "username": "Nombre de usuario"
+    },
+    "requests": {
+      "title": "Solicitudes",
+      "description": "Acepta o rechaza las solicitudes de amistad que hayas recibido.",
+      "none": "No se recibieron solicitudes por el momento",
+      "accept": "Aceptar",
+      "decline": "Rechazar",
+      "notification": "<b>@{{user}}</b> quiere ser tu amigo."
+    },
+    "blocked": {
+      "unreachable": "Este usuario no está disponible. Comprueba si lo has bloqueado.",
+      "trigger": "Administrar contactos bloqueados",
+      "title": "Contactos bloqueados",
+      "description": "Administra los contactos que has bloqueado.",
+      "none": "No hay contactos bloqueados",
+      "success": "{{user}} ha sido bloqueado correctamente."
+    }
+  },
+  "account": {
+    "verify": {
+      "notice": "Verifica tu cuenta para desbloquear todas las funciones."
+    }
+  },
+  "homepage": {
+    "get_started": "Empezar",
+    "conversation": {
+      "title": "Iniciar una conversación",
+      "get_started_description": "Tres pasos rápidos para comenzar tu primera conversación.",
+      "add_contacts": "Añadir contactos",
+      "add_contacts_hint": "Abre el flujo de añadir contactos para invitar a alguien por nombre de usuario.",
+      "select": "Elegir contacto",
+      "select_hint": "Elige un contacto de la barra lateral para abrir el chat.",
+      "message": "Enviar mensaje",
+      "message_hint": "Escribe tu mensaje y envíalo cuando estés listo."
+    },
+    "file": "Enviar un archivo"
+  },
+  "conversations": {
+    "you": "Tú",
+    "edited": "Editado",
+    "history": {
+      "title": "Historial de ediciones",
+      "description": "Versiones anteriores de este mensaje.",
+      "empty": "No hay versiones anteriores disponibles."
+    },
+    "no_messages": "Aún no hay mensajes.",
+    "type_message": "Escribe un mensaje",
+    "send_message": "Enviar mensaje",
+    "close": "Cerrar chat",
+    "actions": {
+      "reply": "Responder",
+      "edit": "Editar",
+      "delete": "Eliminar"
+    },
+    "deleted_message": "Successfully deleted the message.",
+    "deleteMessage": {
+      "confirm": {
+        "title": "Delete Message",
+        "description": "Are you sure you want to delete this message? This action cannot be undone."
+      }
+    },
+    "error": {
+      "failed_loading": "Failed loading chat",
+      "failed_sending": "Failed sending message",
+      "not_participating": "You are not participating in this conversation.",
+      "too_long": "The message can not exceed 2048 characters.",
+      "invalid_message": "An error occured and we couldn't find the message data. Try again later!",
+      "no_permission": "You do not have permission to do that!",
+      "no_relation": "You are not friends with this users or they've blocked you."
+    }
+  },
+  "calls": {
+    "unknown": "Unknown",
+    "badge": {
+      "outgoing": "Outgoing call",
+      "incoming": "Incoming call",
+      "incomingCall": "Incoming call",
+      "incomingAudioCall": "Incoming audio call",
+      "incomingVideoCall": "Incoming video call",
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "status": {
+      "rejected": "Call rejected",
+      "missed": "Missed call",
+      "failed": "Call failed",
+      "ended": "Call ended"
+    },
+    "outgoing": {
+      "waiting": "Waiting for the other person to answer..."
+    },
+    "inProgress": {
+      "waitingRemoteVideo": "Waiting for remote video...",
+      "cameraOff": "Camera is turned off",
+      "noCamera": "No camera",
+      "speaker": "Speaker"
+    },
+    "ended": {
+      "duration": "Call duration: {{duration}}"
+    },
+    "history": {
+      "title": "Call history",
+      "empty": "No calls yet",
+      "failedLoading": "Failed loading call history",
+      "relative": {
+        "now": "ahora",
+        "minutesAgo": "hace {{count}} min",
+        "hoursAgo": "hace {{count}} h",
+        "daysAgo": "hace {{count}} d",
+        "weeksAgo": "hace {{count}} sem"
+      },
+      "reasons": {
+        "timeout": "Tiempo de espera agotado",
+        "canceled": "Cancelada",
+        "cancelled": "Cancelada",
+        "no_answer": "Sin respuesta",
+        "busy": "Ocupado"
+      },
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "page": "Page {{current}} / {{total}}"
+    },
+    "logs": {
+      "initiated": "Started a call",
+      "initiatedWithActor": "{{actor}} started a call",
+      "accepted": "Accepted the call",
+      "acceptedWithActor": "{{actor}} accepted the call",
+      "rejected": "Rejected the call",
+      "rejectedWithActor": "{{actor}} rejected the call",
+      "missed": "Missed call",
+      "finished": "Finished the call",
+      "finishedWithActor": "{{actor}} finished the call"
+    },
+    "toasts": {
+      "contactOffline": "This contact is offline.",
+      "mediaAccessFailed": "Could not access camera/microphone.",
+      "connectionUnavailable": "Connection unavailable. Please try again.",
+      "initializeFailed": "Failed to initialize video call.",
+      "switchCameraFailed": "Unable to switch camera.",
+      "genericError": "An unexpected call error occurred."
+    },
+    "actions": {
+      "startAudio": "Start audio call",
+      "startVideo": "Start video call",
+      "contactOffline": "Contact is offline",
+      "cancelCall": "Cancel call",
+      "decline": "Decline",
+      "answer": "Answer",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "cameraOn": "Camera on",
+      "cameraOff": "Camera off",
+      "switchCamera": "Switch camera",
+      "endCall": "End call",
+      "close": "Close",
+      "minimize": "Minimize",
+      "maximize": "Maximize"
+    }
+  },
+  "profile": {
+    "bio": {
+      "title": "Biografía",
+      "empty": "Biografía vacía.",
+      "edit": {
+        "title": "Editar biografía"
+      }
+    }
+  },
+  "stats": {
+    "member_since": "Miembro desde",
+    "last_active": "Ultima actividad"
+  }
+}
