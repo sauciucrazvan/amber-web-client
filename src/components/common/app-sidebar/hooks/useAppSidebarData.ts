@@ -172,6 +172,29 @@ export function useAppSidebarData({
         return;
       }
 
+      if (payload.event === "contact.profile.updated" && eventPayload.user) {
+        setContactsState((current) =>
+          current.map((contact) =>
+            contact.user.id === eventPayload.user?.id ||
+            contact.user.username === eventPayload.user?.username
+              ? {
+                  ...contact,
+                  user: {
+                    ...contact.user,
+                    full_name: eventPayload.user!.full_name,
+                    avatar_url: eventPayload.user!.avatar_url,
+                    online: eventPayload.user!.online ?? contact.user.online,
+                    last_active_at:
+                      eventPayload.user!.last_active_at ??
+                      contact.user.last_active_at,
+                  },
+                }
+              : contact,
+          ),
+        );
+        return;
+      }
+
       if (payload.event === "contact.removed") {
         setContactsState((current) => {
           const byUserId =
