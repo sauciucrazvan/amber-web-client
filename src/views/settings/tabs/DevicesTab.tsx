@@ -91,7 +91,9 @@ export default function DevicesTab() {
       fallbackKey: string,
     ): MediaDeviceOption[] => {
       return devices
-        .filter((device) => device.kind === kind)
+        .filter(
+          (device) => device.kind === kind && device.deviceId.trim() !== "",
+        )
         .map((device, index) => ({
           deviceId: device.deviceId,
           label:
@@ -123,7 +125,23 @@ export default function DevicesTab() {
     if (!navigator.mediaDevices?.enumerateDevices) return;
 
     try {
-      const devices = await navigator.mediaDevices.enumerateDevices();
+      let devices = await navigator.mediaDevices.enumerateDevices();
+      const hasEmptyLabels = devices.some(
+        (device) => device.kind !== "audiooutput" && !device.label,
+      );
+
+      if (hasEmptyLabels && navigator.mediaDevices.getUserMedia) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true,
+          });
+          stream.getTracks().forEach((track) => track.stop());
+          devices = await navigator.mediaDevices.enumerateDevices();
+        } catch {
+          // Permission denied or not available; keep silent and show empty lists.
+        }
+      }
       const nextMicrophones = toDeviceOptions(
         devices,
         "audioinput",
