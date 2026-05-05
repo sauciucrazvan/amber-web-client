@@ -1,5 +1,4 @@
 import { BUILD_LABEL, BUILD_VERSION } from "@/build-info";
-import { API_BASE_URL, WS_BASE_URL } from "@/config";
 import { useTranslation } from "react-i18next";
 
 const APP_NAME = "Amber";
@@ -48,18 +47,6 @@ export default function AboutTab() {
               <span className="text-muted-foreground">Browser</span>
               <span className="truncate" title={navigator.userAgent}>
                 {navigator.userAgent}
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-muted-foreground">API</span>
-              <span className="truncate" title={API_BASE_URL}>
-                {API_BASE_URL}
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-muted-foreground">WS</span>
-              <span className="truncate" title={WS_BASE_URL}>
-                {WS_BASE_URL}
               </span>
             </div>
           </section>
