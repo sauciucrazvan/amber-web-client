@@ -11,7 +11,8 @@ import {
 import { ConfirmationDialog } from "@/components/ui/confirmation-dialog";
 import { apiUrl } from "@/config";
 import { Ban, X } from "lucide-react";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
+import type { ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import useSWR, { mutate } from "swr";

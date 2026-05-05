@@ -15,7 +15,6 @@ import React, {
 } from "react";
 import { useTranslation } from "react-i18next";
 import type { Instance, SignalData } from "simple-peer";
-// @ts-expect-error Subpath has no bundled type declarations; use browser build to avoid Node stream runtime errors.
 import Peer from "simple-peer/simplepeer.min.js";
 import { toast } from "sonner";
 import { getSettings, setSettings } from "@/platform";
