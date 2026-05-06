@@ -69,7 +69,7 @@ export default function RegisterView() {
     <>
       <section className="flex h-full w-full gap-0 border-t">
         {/* Application Info */}
-        <section className="w-[50%] bg-primary/5 flex flex-col items-center justify-center border-border border-r">
+        <section className="hidden w-[50%] bg-primary/5 md:flex flex-col items-center justify-center border-border border-r">
           <Carousel
             plugins={[plugin.current]}
             className="w-full max-w-40 md:max-w-xs"
@@ -92,7 +92,7 @@ export default function RegisterView() {
             <CarouselNext />
           </Carousel>
         </section>
-        <section className="w-[50%] bg-background flex flex-col items-start justify-start p-4 border-border">
+        <section className="w-full bg-background flex flex-col items-start justify-start p-4 border-border md:w-[50%]">
           {/* Login */}
           <div className="text-muted-foreground flex w-full justify-end items-center gap-1">
             {t("register.loginPrompt")}
