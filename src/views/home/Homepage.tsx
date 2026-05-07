@@ -1,5 +1,5 @@
 import AppSidebar from "@/components/common/app-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import GetStarted from "./dialogs/GetStarted";
 import { ChatProvider, ConversationPanel, useChat } from "./chat";
 
@@ -10,9 +10,14 @@ function HomepageContent() {
   const storedSidebarPos = localStorage.getItem("amber.sidebarPos");
   const sidebarSide: "left" | "right" =
     storedSidebarPos === "right" ? "right" : "left";
+  const sidebarTriggerClass =
+    sidebarSide === "right"
+      ? "md:hidden absolute right-2 top-2 z-30 h-9 w-9 bg-background/80 border border-border shadow-sm"
+      : "md:hidden absolute left-2 top-2 z-30 h-9 w-9 bg-background/80 border border-border shadow-sm";
 
   return (
     <SidebarProvider>
+      <SidebarTrigger className={sidebarTriggerClass} />
       {sidebarSide == "left" ? <AppSidebar /> : null}
       <main className="min-w-0 flex-1 overflow-hidden border-t">
         {activeChat ? (
