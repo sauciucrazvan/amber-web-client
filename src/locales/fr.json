@@ -21,6 +21,20 @@
     "online": "En ligne",
     "offline": "Hors ligne"
   },
+  "downloadClient": {
+    "title": "Installez Amber sur Windows",
+    "description": "Gardez Amber à portée de main avec le client desktop - démarrage plus rapide, meilleur focus et sans onglet de navigateur.",
+    "meta": {
+      "windows": "Windows 10/11",
+      "size": "Installation légère",
+      "updates": "Mises à jour automatiques"
+    },
+    "action": {
+      "download": "Télécharger pour Windows",
+      "dismiss": "Pas maintenant"
+    },
+    "note": "La dernière version s'ouvre depuis la release officielle GitHub."
+  },
   "login": {
     "registerPrompt": "Vous n'avez pas de compte ?",
     "registerLink": "S'inscrire",

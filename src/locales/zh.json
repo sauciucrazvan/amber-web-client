@@ -21,6 +21,20 @@
     "online": "在线",
     "offline": "离线"
   },
+  "downloadClient": {
+    "title": "获取 Windows 版 Amber",
+    "description": "用桌面客户端让 Amber 随手可用 - 启动更快、专注更强，无需浏览器标签。",
+    "meta": {
+      "windows": "Windows 10/11",
+      "size": "轻量安装",
+      "updates": "自动更新"
+    },
+    "action": {
+      "download": "下载 Windows 版",
+      "dismiss": "暂时不用"
+    },
+    "note": "最新版将从 GitHub 官方发布页打开。"
+  },
   "login": {
     "registerPrompt": "还没有账号？",
     "registerLink": "注册",

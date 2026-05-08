@@ -21,6 +21,20 @@
     "online": "Online",
     "offline": "Offline"
   },
+  "downloadClient": {
+    "title": "Hol dir Amber für Windows",
+    "description": "Behalte Amber nah mit dem Desktop-Client - schneller Start, besserer Fokus und kein Browser-Tab nötig.",
+    "meta": {
+      "windows": "Windows 10/11",
+      "size": "Leichte Installation",
+      "updates": "Automatische Updates"
+    },
+    "action": {
+      "download": "Download für Windows",
+      "dismiss": "Jetzt nicht"
+    },
+    "note": "Der neueste Build öffnet sich über das offizielle GitHub-Release."
+  },
   "login": {
     "registerPrompt": "Noch kein Konto?",
     "registerLink": "Registrieren",

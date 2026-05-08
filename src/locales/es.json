@@ -21,6 +21,20 @@
     "online": "En línea",
     "offline": "Sin conexión"
   },
+  "downloadClient": {
+    "title": "Consigue Amber para Windows",
+    "description": "Mantén Amber cerca con el cliente de escritorio: inicio más rápido, mejor enfoque y sin pestaña del navegador.",
+    "meta": {
+      "windows": "Windows 10/11",
+      "size": "Instalación ligera",
+      "updates": "Actualizaciones automáticas"
+    },
+    "action": {
+      "download": "Descargar para Windows",
+      "dismiss": "Ahora no"
+    },
+    "note": "La última versión se abre desde el release oficial de GitHub."
+  },
   "login": {
     "registerPrompt": "¿No tienes una cuenta?",
     "registerLink": "Registrarse",

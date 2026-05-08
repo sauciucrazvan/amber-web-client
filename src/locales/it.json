@@ -21,6 +21,20 @@
     "online": "Online",
     "offline": "Offline"
   },
+  "downloadClient": {
+    "title": "Scarica Amber per Windows",
+    "description": "Tieni Amber vicino con il client desktop: avvio più rapido, più concentrazione e senza scheda del browser.",
+    "meta": {
+      "windows": "Windows 10/11",
+      "size": "Installazione leggera",
+      "updates": "Aggiornamenti automatici"
+    },
+    "action": {
+      "download": "Scarica per Windows",
+      "dismiss": "Non ora"
+    },
+    "note": "L'ultima versione si apre dalla release ufficiale su GitHub."
+  },
   "login": {
     "registerPrompt": "Non hai un account?",
     "registerLink": "Registrati",

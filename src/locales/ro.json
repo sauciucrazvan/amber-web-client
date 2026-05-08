@@ -21,6 +21,20 @@
     "online": "Online",
     "offline": "Offline"
   },
+  "downloadClient": {
+    "title": "Ia Amber pentru Windows",
+    "description": "Păstrează Amber aproape cu clientul desktop - porniri mai rapide, focus mai bun și fără tab de browser.",
+    "meta": {
+      "windows": "Windows 10/11",
+      "size": "Instalare ușoară",
+      "updates": "Actualizări automate"
+    },
+    "action": {
+      "download": "Descarcă pentru Windows",
+      "dismiss": "Nu acum"
+    },
+    "note": "Ultima versiune se descarcă din lansarea oficială de pe GitHub."
+  },
   "login": {
     "registerPrompt": "Nu ai cont?",
     "registerLink": "Înregistrează-te",

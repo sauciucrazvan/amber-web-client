@@ -70,8 +70,6 @@ export default function GeneralTab() {
         </Select>
       </div>
 
-      <Separator className="mt-4" />
-
       <div className="mt-auto w-full pt-4 text-left text-xs text-muted-foreground">
         <a
           className="hover:text-primary underline-offset-4 hover:underline"

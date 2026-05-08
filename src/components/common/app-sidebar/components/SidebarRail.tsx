@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import AddContact from "@/views/dialogs/AddContact";
 import Settings from "@/views/settings/Settings";
 import { Separator } from "@/components/ui/separator";
+import DownloadClient from "./DownloadClient";
 
 type SidebarRailProps = {
   railPaddingClass: string;
@@ -129,6 +130,16 @@ export default function SidebarRail({
       </div>
 
       <div className="mt-auto flex flex-col w-full items-center justify-center py-2 gap-2">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div>
+              <DownloadClient />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side={tooltipSide} className="px-2 py-1 text-xs">
+            {t("downloadClient.title")}
+          </TooltipContent>
+        </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
             <div>

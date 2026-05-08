@@ -21,6 +21,20 @@
     "online": "オンライン",
     "offline": "オフライン"
   },
+  "downloadClient": {
+    "title": "Windows版Amberを入手",
+    "description": "デスクトップクライアントでAmberを手元に。起動が速く、集中しやすく、ブラウザのタブ不要。",
+    "meta": {
+      "windows": "Windows 10/11",
+      "size": "軽量インストール",
+      "updates": "自動更新"
+    },
+    "action": {
+      "download": "Windows版をダウンロード",
+      "dismiss": "今はしない"
+    },
+    "note": "最新ビルドはGitHub公式リリースから開きます。"
+  },
   "login": {
     "registerPrompt": "アカウントをお持ちでないですか？",
     "registerLink": "登録",
