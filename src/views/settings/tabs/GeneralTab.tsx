@@ -101,7 +101,13 @@ export default function GeneralTab() {
         </div>
         <div className="w-full flex-col gap-2 sm:flex-row sm:justify-center">
           <Button asChild>
-            <a href={"#"} target="_blank" rel="noreferrer">
+            <a
+              href={
+                "https://github.com/sauciucrazvan/amber-desktop-client/releases/latest"
+              }
+              target="_blank"
+              rel="noreferrer"
+            >
               {t("downloadClient.action.download")}
             </a>
           </Button>
