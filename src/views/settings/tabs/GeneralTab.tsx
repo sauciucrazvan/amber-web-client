@@ -13,6 +13,8 @@ import {
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 export default function GeneralTab() {
   const { t, i18n } = useTranslation();
@@ -68,6 +70,45 @@ export default function GeneralTab() {
             ))}
           </SelectContent>
         </Select>
+      </div>
+
+      <Separator className="my-4" />
+
+      <div className="flex flex-col items-center text-center gap-5">
+        <div className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <Download className="size-5" />
+        </div>
+        <div className="items-center">
+          <div className="text-center font-bold text-sm">
+            {t("downloadClient.title")}
+          </div>
+          <div className="text-center text-xs text-muted-foreground">
+            {t("downloadClient.description")}
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+          <span>{t("downloadClient.meta.windows")}</span>
+          <span
+            className="h-1 w-1 rounded-full bg-muted-foreground/60"
+            aria-hidden="true"
+          />
+          <span>{t("downloadClient.meta.size")}</span>
+          <span
+            className="h-1 w-1 rounded-full bg-muted-foreground/60"
+            aria-hidden="true"
+          />
+          <span>{t("downloadClient.meta.updates")}</span>
+        </div>
+        <div className="w-full flex-col gap-2 sm:flex-row sm:justify-center">
+          <Button asChild>
+            <a href={"#"} target="_blank" rel="noreferrer">
+              {t("downloadClient.action.download")}
+            </a>
+          </Button>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          {t("downloadClient.note")}
+        </p>
       </div>
 
       <div className="mt-auto w-full pt-4 text-left text-xs text-muted-foreground">
