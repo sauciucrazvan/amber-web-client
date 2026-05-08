@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "../ui/button";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Titlebar() {
   const { t } = useTranslation();
