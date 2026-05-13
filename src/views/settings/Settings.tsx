@@ -25,6 +25,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Info, Paintbrush, SettingsIcon, User, Video } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -135,7 +136,7 @@ export default function Settings(props: SettingsProps) {
               className="items-start h-full min-h-0 flex-1"
               style={{ "--sidebar-width": "12rem" } as React.CSSProperties}
             >
-              <Sidebar collapsible="none" className="hidden md:flex">
+              <Sidebar>
                 <SidebarContent>
                   <SidebarGroup>
                     <SidebarGroupContent>
@@ -165,6 +166,9 @@ export default function Settings(props: SettingsProps) {
               </Sidebar>
               <SidebarInset className="flex h-full min-h-0 flex-1 flex-col overflow-hidden">
                 <header className="flex h-14 shrink-0 items-center px-4">
+                  <div className="mr-2 md:hidden">
+                    <SidebarTrigger />
+                  </div>
                   <Breadcrumb>
                     <BreadcrumbList>
                       <BreadcrumbItem>
