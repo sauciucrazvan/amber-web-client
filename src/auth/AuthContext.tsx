@@ -395,21 +395,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         const isCleanShutdown = disposed || event.code === 1000;
 
-        window.dispatchEvent(
-          new CustomEvent<SharedWsStatusPayload>(WS_STATUS_EVENT_NAME, {
-            detail: {
-              phase: isCleanShutdown ? "disconnected" : "failed",
-              connected: false,
-              message:
-                !isCleanShutdown && event.reason ? event.reason : undefined,
-            },
-          }),
-        );
+        if (isCleanShutdown) {
+          window.dispatchEvent(
+            new CustomEvent<SharedWsStatusPayload>(WS_STATUS_EVENT_NAME, {
+              detail: {
+                phase: "disconnected",
+                connected: false,
+              },
+            }),
+          );
+        }
 
         if (disposed) return;
 
         if (event.code === 1008) {
           traceWs("auth-socket auth error, attempting refresh");
+          window.dispatchEvent(
+            new CustomEvent<SharedWsStatusPayload>(WS_STATUS_EVENT_NAME, {
+              detail: {
+                phase: "connecting",
+                connected: false,
+              },
+            }),
+          );
           clearReconnectTimeout();
           reconnectTimeoutId = setTimeout(async () => {
             const newToken = await refreshAccessToken();
@@ -424,6 +432,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return;
         }
 
+        window.dispatchEvent(
+          new CustomEvent<SharedWsStatusPayload>(WS_STATUS_EVENT_NAME, {
+            detail: {
+              phase: "connecting",
+              connected: false,
+            },
+          }),
+        );
         clearReconnectTimeout();
         reconnectTimeoutId = setTimeout(connect, HEARTBEAT_RECONNECT_MS);
       };
