@@ -16,6 +16,7 @@ import {
   getStoredTokens,
   setStoredTokens,
   type StoredTokens,
+  isTokenExpiringSoon,
 } from "@/auth/tokenStorage";
 
 type TokenResponse = {
@@ -406,8 +407,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         );
 
         if (disposed) return;
+
         if (event.code === 1008) {
-          logout();
+          traceWs("auth-socket auth error, attempting refresh");
+          clearReconnectTimeout();
+          reconnectTimeoutId = setTimeout(async () => {
+            const newToken = await refreshAccessToken();
+            if (newToken) {
+              traceWs("auth-socket token refreshed, reconnecting");
+              connect();
+            } else {
+              traceWs("auth-socket token refresh failed, logging out");
+              logout();
+            }
+          }, 1000);
           return;
         }
 
@@ -432,6 +445,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     };
   }, [logout, tokens.accessToken, wsSessionId]);
+
+  useEffect(() => {
+    if (!tokens.accessToken) return;
+
+    if (isTokenExpiringSoon(tokens.accessToken, 5 * 60 * 1000)) {
+      traceWs("token expiring soon, refreshing proactively");
+      refreshAccessToken();
+    }
+
+    const checkInterval = setInterval(() => {
+      if (isTokenExpiringSoon(tokens.accessToken, 5 * 60 * 1000)) {
+        traceWs("token expiring soon, refreshing proactively");
+        refreshAccessToken();
+      }
+    }, 60 * 1000);
+
+    return () => clearInterval(checkInterval);
+  }, [tokens.accessToken, refreshAccessToken]);
 
   const authFetch = useCallback(
     async (input: RequestInfo | URL, init?: RequestInit) => {

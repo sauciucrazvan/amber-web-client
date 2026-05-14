@@ -6,6 +6,38 @@ export type StoredTokens = {
   refreshToken: string | null;
 };
 
+export function decodeToken(token: string): Record<string, unknown> | null {
+  try {
+    const parts = token.split(".");
+    if (parts.length !== 3) return null;
+
+    const decoded = atob(parts[1]);
+    return JSON.parse(decoded);
+  } catch {
+    return null;
+  }
+}
+
+export function getTokenExpiration(token: string | null): number | null {
+  if (!token) return null;
+
+  const payload = decodeToken(token);
+  if (!payload || typeof payload.exp !== "number") return null;
+
+  return payload.exp * 1000;
+}
+
+export function isTokenExpiringSoon(
+  token: string | null,
+  bufferMs: number = 5 * 60 * 1000,
+): boolean {
+  const expiration = getTokenExpiration(token);
+  if (expiration === null) return false;
+
+  const now = Date.now();
+  return now + bufferMs >= expiration;
+}
+
 export function getStoredTokens(): StoredTokens {
   return {
     accessToken: localStorage.getItem(ACCESS_TOKEN_KEY),
