@@ -2,7 +2,11 @@ import { WS_MESSAGE_EVENT_NAME } from "@/auth/AuthContext";
 
 export type ContactsWsEventPayload = {
   type: "contacts";
-  event: "contact.accepted" | "contact.removed" | "contact.last_action.updated";
+  event:
+    | "contact.accepted"
+    | "contact.removed"
+    | "contact.last_action.updated"
+    | "contact.last_message.updated";
   payload: Record<string, unknown>;
 };
 

@@ -99,6 +99,36 @@ export function useConversationComposer({
     [peerUserId],
   );
 
+  const emitLastMessageUpdate = useCallback(
+    (message: MessageItem | null) => {
+      if (typeof peerUserId !== "number") return;
+
+      dispatchContactsEvent({
+        type: "contacts",
+        event: "contact.last_message.updated",
+        payload: {
+          user_id: peerUserId,
+          last_message: message
+            ? {
+                sender_id: message.sender_id,
+                type: message.type,
+                content: message.content,
+                created_at: message.created_at,
+              }
+            : null,
+        },
+      });
+    },
+    [peerUserId],
+  );
+
+  const getLastMessage = useCallback((items: MessageItem[]) => {
+    return items.reduce<MessageItem | null>((latest, message) => {
+      if (!latest || message.seq > latest.seq) return message;
+      return latest;
+    }, null);
+  }, []);
+
   const onSend = useCallback(async () => {
     if (!conversationId || !canSend) return;
 
@@ -125,6 +155,7 @@ export function useConversationComposer({
         setMessages((current) => mergeMessages(current, [createdMessage]));
         onMessageActivity?.();
         emitLastActionUpdate(createdMessage.created_at);
+        emitLastMessageUpdate(createdMessage);
       } else if (editing) {
         const payload = { message_id: editing.id, text: trimmedMessage };
         const res = await authFetch(
@@ -144,6 +175,11 @@ export function useConversationComposer({
         emitLastActionUpdate(
           editedMessage.edited_at ?? new Date().toISOString(),
         );
+
+        const currentLast = getLastMessage(messages);
+        if (currentLast?.id === editedMessage.id) {
+          emitLastMessageUpdate(editedMessage);
+        }
       } else {
         const payload = { text: trimmedMessage };
         const res = await authFetch(
@@ -162,6 +198,7 @@ export function useConversationComposer({
         setMessages((current) => mergeMessages(current, [createdMessage]));
         onMessageActivity?.();
         emitLastActionUpdate(createdMessage.created_at);
+        emitLastMessageUpdate(createdMessage);
       }
 
       setMessageText("");
@@ -180,8 +217,11 @@ export function useConversationComposer({
     conversationId,
     editing,
     emitLastActionUpdate,
+    emitLastMessageUpdate,
+    getLastMessage,
     mergeMessages,
     messageText,
+    messages,
     replaceMessageById,
     replyTo,
     setMessages,
@@ -214,11 +254,31 @@ export function useConversationComposer({
         setMessages((current) =>
           current.filter((message) => message.id !== id),
         );
+
+        const currentLast = getLastMessage(messages);
+        if (currentLast?.id === id) {
+          const nextMessages = messages.filter((message) => message.id !== id);
+          const nextLast = getLastMessage(nextMessages);
+          emitLastMessageUpdate(nextLast);
+          if (nextLast?.created_at) {
+            emitLastActionUpdate(nextLast.created_at);
+          }
+        }
       } catch (e) {
         toast.error(e instanceof Error ? t(e.message) : t("common.error"));
       }
     },
-    [authFetch, conversationId, setMessages, shouldAutoScrollRef, t],
+    [
+      authFetch,
+      conversationId,
+      emitLastActionUpdate,
+      emitLastMessageUpdate,
+      getLastMessage,
+      messages,
+      setMessages,
+      shouldAutoScrollRef,
+      t,
+    ],
   );
 
   const onReply = useCallback(
