@@ -158,15 +158,12 @@ export function useConversationRealtime({
         const myUserId = myUserIdRef.current;
         if (myUserId !== null && readerId === myUserId) {
           noteReadCursorSyncedRef.current?.(lastSeenSeq);
-          return;
         }
-
-        if (typeof myUserId !== "number") return;
 
         setMessages((current) =>
           current.map((message) => {
+            if (message.sender_id === readerId) return message;
             if (message.seq > lastSeenSeq) return message;
-            if (message.sender_id !== myUserId) return message;
             if (message.seen) return message;
             return {
               ...message,
