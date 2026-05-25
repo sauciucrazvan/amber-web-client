@@ -512,6 +512,8 @@
     },
     "toasts": {
       "contactOffline": "This contact is offline.",
+      "microphoneAccessFailed": "We can't access your microphone.",
+      "cameraAccessFailed": "We can't access your camera.",
       "mediaAccessFailed": "Could not access camera/microphone.",
       "connectionUnavailable": "Connection unavailable. Please try again.",
       "initializeFailed": "Failed to initialize video call.",

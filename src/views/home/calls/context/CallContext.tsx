@@ -271,40 +271,118 @@ export function CallProvider({ children }: { children: React.ReactNode }) {
         setSelectedAudioOutputId(preferredSpeakerId);
       }
 
-      const requestedConstraints: MediaStreamConstraints = {
-        video:
-          mode === "video"
-            ? preferredCameraId
-              ? { deviceId: { exact: preferredCameraId } }
-              : { facingMode: currentFacingModeRef.current }
-            : false,
-        audio: preferredMicrophoneId
-          ? { deviceId: { exact: preferredMicrophoneId } }
-          : true,
-      };
+      const wantsVideo = mode === "video";
 
-      let stream: MediaStream;
-      try {
-        stream =
-          await navigator.mediaDevices.getUserMedia(requestedConstraints);
-      } catch {
-        stream = await navigator.mediaDevices.getUserMedia({
-          video:
-            mode === "video"
-              ? { facingMode: currentFacingModeRef.current }
-              : false,
-          audio: true,
-        });
+      if (!navigator.mediaDevices?.getUserMedia) {
+        setCameraEnabled(false);
+        setMicrophoneEnabled(false);
+        toast.error(t("calls.toasts.microphoneAccessFailed"));
+        if (wantsVideo) {
+          toast.error(t("calls.toasts.cameraAccessFailed"));
+        }
+        return null;
       }
 
-      localStreamRef.current = stream;
-      setLocalStream(stream);
-      setCameraEnabled(stream.getVideoTracks().length > 0);
-      setMicrophoneEnabled(true);
+      const buildVideoConstraints = (usePreferred: boolean) => {
+        if (!wantsVideo) return false;
+        if (usePreferred && preferredCameraId) {
+          return { deviceId: { exact: preferredCameraId } };
+        }
+        return { facingMode: currentFacingModeRef.current };
+      };
 
-      return stream;
+      const buildAudioConstraints = (usePreferred: boolean) => {
+        if (usePreferred && preferredMicrophoneId) {
+          return { deviceId: { exact: preferredMicrophoneId } };
+        }
+        return true;
+      };
+
+      const tryGetUserMedia = async (
+        constraints: MediaStreamConstraints,
+      ): Promise<MediaStream | null> => {
+        try {
+          return await navigator.mediaDevices.getUserMedia(constraints);
+        } catch {
+          return null;
+        }
+      };
+
+      const requestStream = async (
+        video: MediaStreamConstraints["video"],
+        audio: MediaStreamConstraints["audio"],
+      ) => {
+        if (video === false && audio === false) return null;
+        return await tryGetUserMedia({ video, audio });
+      };
+
+      let stream = await requestStream(
+        buildVideoConstraints(true),
+        buildAudioConstraints(true),
+      );
+
+      if (!stream && (preferredCameraId || preferredMicrophoneId)) {
+        stream = await requestStream(
+          buildVideoConstraints(false),
+          buildAudioConstraints(false),
+        );
+      }
+
+      if (!stream) {
+        let audioOnlyStream = await requestStream(
+          false,
+          buildAudioConstraints(true),
+        );
+
+        if (!audioOnlyStream && preferredMicrophoneId) {
+          audioOnlyStream = await requestStream(false, true);
+        }
+
+        let videoOnlyStream: MediaStream | null = null;
+        if (wantsVideo) {
+          videoOnlyStream = await requestStream(
+            buildVideoConstraints(true),
+            false,
+          );
+
+          if (!videoOnlyStream && preferredCameraId) {
+            videoOnlyStream = await requestStream(
+              buildVideoConstraints(false),
+              false,
+            );
+          }
+        }
+
+        if (audioOnlyStream && videoOnlyStream) {
+          stream = new MediaStream([
+            ...audioOnlyStream.getTracks(),
+            ...videoOnlyStream.getTracks(),
+          ]);
+        } else {
+          stream = audioOnlyStream || videoOnlyStream;
+        }
+      }
+
+      const hasVideo = Boolean(stream?.getVideoTracks().length);
+      const hasAudio = Boolean(stream?.getAudioTracks().length);
+
+      setCameraEnabled(hasVideo);
+      setMicrophoneEnabled(hasAudio);
+
+      if (!hasAudio) {
+        toast.error(t("calls.toasts.microphoneAccessFailed"));
+      }
+
+      if (wantsVideo && !hasVideo) {
+        toast.error(t("calls.toasts.cameraAccessFailed"));
+      }
+
+      localStreamRef.current = stream ?? null;
+      setLocalStream(stream ?? null);
+
+      return stream ?? null;
     },
-    [getPreferredMediaDevices],
+    [getPreferredMediaDevices, t],
   );
 
   const applyPeerSignal = useCallback((signal: QueueSignal) => {
@@ -463,12 +541,7 @@ export function CallProvider({ children }: { children: React.ReactNode }) {
       callModeRef.current = mode;
       setCallMode(mode);
 
-      try {
-        await ensureLocalStream(mode);
-      } catch {
-        toast.error(t("calls.toasts.mediaAccessFailed"));
-        return;
-      }
+      await ensureLocalStream(mode);
 
       setPeer(formatPeer(target));
       setLastEndReason(null);
@@ -528,13 +601,7 @@ export function CallProvider({ children }: { children: React.ReactNode }) {
     acceptingIncomingCallRef.current = true;
     const mode = callModeRef.current;
 
-    try {
-      await ensureLocalStream(mode);
-    } catch {
-      toast.error(t("calls.toasts.mediaAccessFailed"));
-      acceptingIncomingCallRef.current = false;
-      return;
-    }
+    await ensureLocalStream(mode);
 
     if (mode === "audio") {
       setCameraEnabled(false);
@@ -964,12 +1031,7 @@ export function CallProvider({ children }: { children: React.ReactNode }) {
           callModeRef.current = acceptedMode;
           setCallMode(acceptedMode);
 
-          try {
-            await ensureLocalStream(acceptedMode);
-          } catch {
-            toast.error(t("calls.toasts.mediaAccessFailed"));
-            return;
-          }
+          await ensureLocalStream(acceptedMode);
 
           if (acceptedMode === "audio") {
             setCameraEnabled(false);

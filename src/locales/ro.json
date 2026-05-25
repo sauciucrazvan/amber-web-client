@@ -512,6 +512,8 @@
     },
     "toasts": {
       "contactOffline": "Acest contact este offline.",
+      "microphoneAccessFailed": "We can't access your microphone.",
+      "cameraAccessFailed": "We can't access your camera.",
       "mediaAccessFailed": "Nu s-a putut accesa camera/microfonul.",
       "connectionUnavailable": "Conexiune indisponibilă. Te rugăm să încerci din nou.",
       "initializeFailed": "Inițializarea apelului video a eșuat.",
