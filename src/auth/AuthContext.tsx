@@ -43,6 +43,7 @@ type AuthContextValue = {
     input: RequestInfo | URL,
     init?: RequestInit,
   ) => Promise<Response>;
+  registerMutation: any;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -68,6 +69,7 @@ export type PresenceEventPayload = {
 async function readErrorMessage(res: Response) {
   try {
     const data = await res.json();
+    if (data && typeof data === "object") return data;
     if (typeof data?.detail === "string") return data.detail;
   } catch {
     return `Request failed (${res.status})`;
@@ -197,7 +199,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const registerMutation = useSWRMutation<
     unknown,
-    Error,
+    any,
     string,
     RegisterRequest
   >(apiUrl("/auth/v1/register"), async (url, { arg }) => {
@@ -212,7 +214,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }),
     });
 
-    if (!res.ok) throw new Error(await readErrorMessage(res));
+    if (!res.ok) {
+      const parsedError = await readErrorMessage(res);
+      if (parsedError && typeof parsedError === "object") {
+        const customErr = new Error(`Request failed (${res.status})`) as any;
+        customErr.status = res.status;
+        customErr.body = parsedError;
+        throw customErr;
+      }
+      throw new Error(parsedError);
+    }
     return res.json();
   });
 
@@ -525,6 +536,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       register,
       logout,
       authFetch,
+      registerMutation,
     }),
     [
       authFetch,
@@ -533,6 +545,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       register,
       tokens.accessToken,
       tokens.refreshToken,
+      registerMutation,
     ],
   );
 

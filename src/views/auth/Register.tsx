@@ -31,20 +31,32 @@ import TermsView from "./dialogs/legal/Terms";
 import PrivacyView from "./dialogs/legal/Privacy";
 import ErrorBox from "@/components/common/error-box";
 
+interface ApiErrorItem {
+  error: string;
+  field: string;
+}
+
 export default function RegisterView() {
   const [, setLocation] = useLocation();
   const { t } = useTranslation();
-  const { register } = useAuth();
+
+  // Destructure registerMutation directly from useAuth context
+  const { register, registerMutation } = useAuth() as any;
+
   const [username, setUsername] = useState("");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+
+  const [fallbackError, setFallbackError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = async () => {
-    setError(null);
+    setFallbackError(null);
+    setFieldErrors({});
     setIsSubmitting(true);
+
     try {
       await register({
         username,
@@ -54,8 +66,32 @@ export default function RegisterView() {
       });
       setLocation("/");
       toast.success(t("register.greeting"));
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Registration failed");
+    } catch (e: any) {
+      // Pull directly from SWR's raw error state instance linked to the fetcher execution
+      const swrRawError = registerMutation?.error;
+      let targetData =
+        swrRawError?.body || swrRawError?.response?.data || swrRawError || e;
+
+      if (typeof targetData === "string") {
+        try {
+          targetData = JSON.parse(targetData);
+        } catch (_) {}
+      }
+
+      const errorsArray: ApiErrorItem[] | undefined =
+        targetData?.detail?.errors || targetData?.errors;
+
+      if (errorsArray && Array.isArray(errorsArray)) {
+        const mappedErrors: Record<string, string> = {};
+        errorsArray.forEach((err) => {
+          mappedErrors[err.field] = err.error;
+        });
+        setFieldErrors(mappedErrors);
+      } else {
+        setFallbackError(
+          e instanceof Error ? e.message : "Registration failed",
+        );
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -68,7 +104,6 @@ export default function RegisterView() {
   return (
     <>
       <section className="flex h-full w-full gap-0 border-t">
-        {/* Application Info */}
         <section className="hidden w-[50%] bg-primary/5 md:flex flex-col items-center justify-center border-border border-r">
           <Carousel
             plugins={[plugin.current]}
@@ -93,7 +128,6 @@ export default function RegisterView() {
           </Carousel>
         </section>
         <section className="w-full bg-background flex flex-col items-start justify-start p-4 border-border md:w-[50%]">
-          {/* Login */}
           <div className="text-muted-foreground flex w-full justify-end items-center gap-1">
             {t("register.loginPrompt")}
             <a
@@ -104,7 +138,6 @@ export default function RegisterView() {
             </a>
           </div>
 
-          {/* Register */}
           <div className="flex flex-col w-full h-full justify-center items-center">
             <h1 className="text-2xl font-semibold tracking-tight">
               {t("register.title")}
@@ -114,79 +147,153 @@ export default function RegisterView() {
             </p>
 
             <div className="w-75 mt-4 flex flex-col gap-2">
-              {/* Username */}
-              <InputGroup>
-                <InputGroupInput
-                  id="username"
-                  placeholder={t("register.usernamePlaceholder")}
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+              <div
+                data-invalid={fieldErrors.username ? true : undefined}
+                className="flex flex-col gap-1"
+              >
+                {fieldErrors.username && (
+                  <label
+                    htmlFor="username"
+                    className="text-destructive text-[11px] font-normal leading-none tracking-wide pl-0.5 mb-0.5"
+                  >
+                    {t(fieldErrors.username)}
+                  </label>
+                )}
+                <InputGroup>
+                  <InputGroupInput
+                    id="username"
+                    placeholder={t("register.usernamePlaceholder")}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    aria-invalid={fieldErrors.username ? true : undefined}
+                    className={
+                      fieldErrors.username
+                        ? "border-destructive focus-visible:ring-destructive"
+                        : ""
+                    }
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        onSubmit();
+                      }
+                    }}
+                  />
+                  <InputGroupAddon>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InputGroupButton
+                          variant="ghost"
+                          aria-label={t("common.help")}
+                          size="icon-xs"
+                        >
+                          <AtSign />
+                        </InputGroupButton>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{t("register.usernameHint")}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </InputGroupAddon>
+                </InputGroup>
+              </div>
+
+              <div
+                data-invalid={fieldErrors.full_name ? true : undefined}
+                className="flex flex-col gap-1"
+              >
+                {fieldErrors.full_name && (
+                  <label
+                    htmlFor="full_name"
+                    className="text-destructive text-[11px] font-normal leading-none tracking-wide pl-0.5 mb-0.5"
+                  >
+                    {t(fieldErrors.full_name)}
+                  </label>
+                )}
+                <Input
+                  id="full_name"
+                  placeholder={t("register.fullnamePlaceholder")}
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  aria-invalid={fieldErrors.full_name ? true : undefined}
+                  className={
+                    fieldErrors.full_name
+                      ? "border-destructive focus-visible:ring-destructive"
+                      : ""
+                  }
                   onKeyDown={(event) => {
                     if (event.key === "Enter") {
                       onSubmit();
                     }
                   }}
                 />
-                <InputGroupAddon>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <InputGroupButton
-                        variant="ghost"
-                        aria-label={t("common.help")}
-                        size="icon-xs"
-                      >
-                        <AtSign />
-                      </InputGroupButton>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{t("register.usernameHint")}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </InputGroupAddon>
-              </InputGroup>
+              </div>
 
-              {/* Full Name */}
-              <Input
-                placeholder={t("register.fullnamePlaceholder")}
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    onSubmit();
+              <div
+                data-invalid={fieldErrors.email ? true : undefined}
+                className="flex flex-col gap-1"
+              >
+                {fieldErrors.email && (
+                  <label
+                    htmlFor="email"
+                    className="text-destructive text-[11px] font-normal leading-none tracking-wide pl-0.5 mb-0.5"
+                  >
+                    {t(fieldErrors.email)}
+                  </label>
+                )}
+                <Input
+                  id="email"
+                  placeholder={t("register.emailPlaceholder")}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  aria-invalid={fieldErrors.email ? true : undefined}
+                  className={
+                    fieldErrors.email
+                      ? "border-destructive focus-visible:ring-destructive"
+                      : ""
                   }
-                }}
-              />
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      onSubmit();
+                    }
+                  }}
+                />
+              </div>
 
-              {/* Email */}
-              <Input
-                placeholder={t("register.emailPlaceholder")}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    onSubmit();
+              <div
+                data-invalid={fieldErrors.password ? true : undefined}
+                className="flex flex-col gap-1"
+              >
+                {fieldErrors.password && (
+                  <label
+                    htmlFor="password"
+                    className="text-destructive text-[11px] font-normal leading-none tracking-wide pl-0.5 mb-0.5"
+                  >
+                    {t(fieldErrors.password)}
+                  </label>
+                )}
+                <Input
+                  id="password"
+                  placeholder={t("register.passwordPlaceholder")}
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  aria-invalid={fieldErrors.password ? true : undefined}
+                  className={
+                    fieldErrors.password
+                      ? "border-destructive focus-visible:ring-destructive"
+                      : ""
                   }
-                }}
-              />
-
-              {/* Password */}
-              <Input
-                placeholder={t("register.passwordPlaceholder")}
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    onSubmit();
-                  }
-                }}
-              />
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      onSubmit();
+                    }
+                  }}
+                />
+              </div>
             </div>
 
             <div className="flex flex-col items-center justify-center gap-4 mt-4 w-75">
-              {error ? <ErrorBox>{t(error)}</ErrorBox> : null}
+              {fallbackError ? <ErrorBox>{t(fallbackError)}</ErrorBox> : null}
 
-              {/* Create Account */}
               <Button
                 className="cursor-pointer"
                 onClick={onSubmit}
@@ -210,7 +317,6 @@ export default function RegisterView() {
             </div>
           </div>
 
-          {/* Settings */}
           <div className="text-muted-foreground flex w-full justify-end items-center gap-1">
             <Settings minimalViews={true} />
           </div>

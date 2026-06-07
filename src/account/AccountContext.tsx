@@ -33,7 +33,7 @@ type AccountWsPayload = {
 type AccountContextValue = {
   account: AccountMe | null;
   isLoading: boolean;
-  error: string | null;
+  error: any | null;
   refreshAccount: () => Promise<void>;
 };
 
@@ -82,7 +82,7 @@ function parseAccount(raw: unknown): AccountMe | null {
 async function readErrorMessage(res: Response) {
   try {
     const data = await res.json();
-    if (typeof data?.detail === "string") return data.detail;
+    if (data && typeof data === "object") return data;
   } catch {
     return `Request failed (${res.status})`;
   }
@@ -93,7 +93,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   const { isAuthenticated, authFetch } = useAuth();
   const [account, setAccount] = useState<AccountMe | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<any | null>(null);
 
   const refreshAccount = useCallback(async () => {
     if (!isAuthenticated) return;
@@ -104,7 +104,11 @@ export function AccountProvider({ children }: { children: ReactNode }) {
     try {
       const res = await authFetch(apiUrl("/account/v1/me"));
       if (!res.ok) {
-        throw new Error(await readErrorMessage(res));
+        const errorBody = await readErrorMessage(res);
+        if (errorBody && typeof errorBody === "object") {
+          throw errorBody;
+        }
+        throw new Error(errorBody);
       }
 
       const data = parseAccount(await res.json());
@@ -114,7 +118,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
 
       setAccount(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load account");
+      setError(err);
     } finally {
       setIsLoading(false);
     }
