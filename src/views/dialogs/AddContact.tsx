@@ -32,14 +32,14 @@ export default function AddContact({ children }: Props) {
   const { accessToken, isAuthenticated } = useAuth();
 
   const onSubmit = async () => {
-    const requestedUsername = username.trim();
+    const requestedIdentifier = username.trim();
 
     setError(null);
     setIsSubmitting(true);
-    setSubmittedUsername(requestedUsername);
+    setSubmittedUsername(requestedIdentifier);
 
     try {
-      if (requestedUsername === "") {
+      if (requestedIdentifier === "") {
         return;
       }
 
@@ -50,7 +50,7 @@ export default function AddContact({ children }: Props) {
           Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({
-          username: requestedUsername,
+          identifier: requestedIdentifier,
         }),
       });
 
@@ -67,7 +67,7 @@ export default function AddContact({ children }: Props) {
 
       setOpen(false);
       toast.success(
-        t("contacts.requested").replace("{{user}}", requestedUsername),
+        t("contacts.requested").replace("{{user}}", requestedIdentifier),
       );
       setUsername("");
       setSubmittedUsername("");
