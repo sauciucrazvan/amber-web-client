@@ -10,16 +10,81 @@ import {
 import UserAvatar from "@/components/common/user-avatar";
 import UserProfile from "@/views/dialogs/UserProfile";
 import { useCalls } from "@/views/home/calls";
-import { Edit2, Phone, Reply, Send, Video, X } from "lucide-react";
+import {
+  Edit2,
+  File as FileIcon,
+  FileArchive,
+  FileCode,
+  FileText,
+  Paperclip,
+  Phone,
+  Reply,
+  Send,
+  Smile,
+  Video,
+  X,
+} from "lucide-react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useChat } from "../context/ChatContext";
 import ChatBubble from "./ChatBubble";
 import { useConversationLogic } from "../hooks/useConversationLogic";
+import { useReactions } from "../hooks/useReactions";
 import type { MessageItem } from "../types";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { cn, formatRelativeTime } from "@/lib/utils";
+import EmojiPanel from "./EmojiPanel";
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@/components/ui/attachment";
+import { Badge } from "@/components/ui/badge";
+
+function formatBytes(bytes?: number): string {
+  if (!bytes) return "0 B";
+  const k = 1024;
+  const sizes = ["B", "KB", "MB", "GB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`;
+}
+
+function getFileIcon(contentType?: string) {
+  const type = contentType?.toLowerCase() || "";
+  const baseClasses = "h-8 w-8 shrink-0 text-primary";
+
+  if (
+    type.includes("zip") ||
+    type.includes("rar") ||
+    type.includes("tar") ||
+    type.includes("gzip")
+  ) {
+    return <FileArchive className={baseClasses} />;
+  }
+  if (
+    type.includes("text") ||
+    type.includes("pdf") ||
+    type.includes("document") ||
+    type.includes("sheet")
+  ) {
+    return <FileText className={baseClasses} />;
+  }
+  if (
+    type.includes("javascript") ||
+    type.includes("json") ||
+    type.includes("html") ||
+    type.includes("css")
+  ) {
+    return <FileCode className={baseClasses} />;
+  }
+
+  return <FileIcon className={`${baseClasses} opacity-70`} />;
+}
 
 type ConversationRow =
   | {
@@ -44,6 +109,8 @@ export default function ConversationPanel() {
     messages,
     messageText,
     setMessageText,
+    selectedFile,
+    setSelectedFile,
     replyTo,
     setReplyTo,
     editing,
@@ -61,6 +128,7 @@ export default function ConversationPanel() {
     onReply,
     onEdit,
     onScroll,
+    setMessages,
   } = useConversationLogic({
     accessToken,
     authFetch,
@@ -70,11 +138,22 @@ export default function ConversationPanel() {
     language: i18n.language,
   });
 
+  const { addReaction, removeReaction } = useReactions({
+    conversationId,
+    authFetch,
+    t,
+    setMessages,
+  });
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   const cancelComposerModes = useCallback(() => {
     setEditing(null);
     setReplyTo(null);
+    setSelectedFile(null);
     setMessageText("");
-  }, [setEditing, setReplyTo, setMessageText]);
+  }, [setEditing, setMessageText, setReplyTo, setSelectedFile]);
 
   useEffect(() => {
     if (!editing && !replyTo) return;
@@ -90,6 +169,20 @@ export default function ConversationPanel() {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [cancelComposerModes, editing, replyTo]);
+
+  useEffect(() => {
+    const preventWindowDrop = (e: DragEvent) => {
+      e.preventDefault();
+    };
+
+    window.addEventListener("dragover", preventWindowDrop, false);
+    window.addEventListener("drop", preventWindowDrop, false);
+
+    return () => {
+      window.removeEventListener("dragover", preventWindowDrop, false);
+      window.removeEventListener("drop", preventWindowDrop, false);
+    };
+  }, []);
 
   const VIRTUALIZE_MESSAGES_THRESHOLD = 120;
   const shouldVirtualize = messages.length >= VIRTUALIZE_MESSAGES_THRESHOLD;
@@ -183,17 +276,68 @@ export default function ConversationPanel() {
     setShowLastActivity(false);
     const intervalId = window.setInterval(() => {
       setShowLastActivity((current) => !current);
-    }, 30000);
+    }, 10000);
 
     return () => {
       window.clearInterval(intervalId);
     };
   }, [isOnline, lastActiveLabel]);
 
+  const handleDragOver = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (editing) return;
+
+      if (e.dataTransfer) {
+        e.dataTransfer.dropEffect = "copy";
+      }
+      setIsDragging(true);
+    },
+    [editing],
+  );
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  }, []);
+
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragging(false);
+      if (editing) return;
+
+      const file = e.dataTransfer.files?.[0];
+      if (file) {
+        setSelectedFile(file);
+      }
+    },
+    [editing, setSelectedFile],
+  );
+
   if (!activeChat) return null;
 
   return (
-    <section className="flex h-full w-full flex-col pt-2">
+    <section
+      className={cn(
+        "relative flex h-full w-full flex-col pt-2 transition-colors duration-150",
+        isDragging &&
+          !editing &&
+          "bg-primary/3 shadow-[inset_0_0_0_2px_rgba(var(--primary),0.15)]",
+      )}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
+      {isDragging && !editing && (
+        <div className="absolute inset-0 pointer-events-none z-50 flex flex-col items-center justify-center border-2 border-dashed border-primary/40 m-2 rounded-xl bg-background/50 backdrop-blur-xs transition-all duration-150 animate-in fade-in">
+          <Paperclip className="size-10 text-primary animate-bounce" />
+        </div>
+      )}
+
       <div className="border-b">
         <div className="mb-1 flex items-center justify-between px-4 pb-1">
           <div className="flex min-w-0 flex-1 items-center gap-2">
@@ -235,7 +379,7 @@ export default function ConversationPanel() {
                         )}
                       >
                         {t("stats.last_active", "Last active")}{" "}
-                        {lastActiveLabel}
+                        {isOnline ? t("common.now", "now") : lastActiveLabel}
                       </span>
                     </div>
                   </div>
@@ -371,12 +515,10 @@ export default function ConversationPanel() {
                     }
                   >
                     {row.type === "date" ? (
-                      <div className="flex items-center gap-3 py-2">
-                        <div className="flex-1 h-px bg-border" />
-                        <div className="text-xs text-muted-foreground px-2">
+                      <div className="flex justify-center py-3">
+                        <Badge variant="outline" className="px-3">
                           {row.date}
-                        </div>
-                        <div className="flex-1 h-px bg-border" />
+                        </Badge>
                       </div>
                     ) : (
                       <ChatBubble
@@ -387,6 +529,12 @@ export default function ConversationPanel() {
                         edit_func={() => onEdit(row.message.id)}
                         reply_func={() => onReply(row.message.id)}
                         delete_func={() => onDelete(row.message.id)}
+                        add_reaction_func={(emoji) =>
+                          addReaction(row.message.id, emoji)
+                        }
+                        remove_reaction_func={(emoji) =>
+                          removeReaction(row.message.id, emoji)
+                        }
                       />
                     )}
                   </div>
@@ -417,12 +565,10 @@ export default function ConversationPanel() {
               return (
                 <div key={message.id} id={`message-${message.id}`}>
                   {showDateSeparator && (
-                    <div className="flex items-center gap-3 py-2">
-                      <div className="flex-1 h-px bg-border" />
-                      <div className="text-xs text-muted-foreground px-2">
+                    <div className="flex justify-center py-3">
+                      <Badge variant="outline" className="px-3">
                         {currentDate}
-                      </div>
-                      <div className="flex-1 h-px bg-border" />
+                      </Badge>
                     </div>
                   )}
                   <ChatBubble
@@ -433,6 +579,12 @@ export default function ConversationPanel() {
                     edit_func={() => onEdit(message.id)}
                     reply_func={() => onReply(message.id)}
                     delete_func={() => onDelete(message.id)}
+                    add_reaction_func={(emoji) =>
+                      addReaction(message.id, emoji)
+                    }
+                    remove_reaction_func={(emoji) =>
+                      removeReaction(message.id, emoji)
+                    }
                   />
                 </div>
               );
@@ -445,48 +597,145 @@ export default function ConversationPanel() {
       <div className="border-t overflow-hidden">
         {editing && (
           <div className="w-full inline-flex justify-between items-center gap-2 px-4 pt-2 pb-1">
-            <div className="inline-flex min-w-0 items-start gap-2">
-              <Edit2 className="size-8 mt-0.5 text-muted-foreground" />
-              <div className="w-full bg-primary/5 p-2 rounded-sm whitespace-pre-wrap break-all wrap-anywhere">
-                <p className="text-xs text-muted-foreground mb-1 font-medium">
-                  {t("conversations.you")}
-                </p>
-                <p className="text-sm">{editing.content.text}</p>
-              </div>
+            <div className="min-w-0 flex-1 border-l-4 px-3 py-2 rounded-r-md rounded-l-sm text-left transition-colors flex flex-col bg-muted-foreground/10 border-muted-foreground/30 text-foreground">
+              <span className="text-xs font-semibold mb-0.5 text-muted-foreground inline-flex items-center gap-1.5">
+                <Edit2 className="size-3.5" />
+                {t("conversations.editing_message", "Editing message")}
+              </span>
+              <span className="text-sm inline-flex items-center gap-1 opacity-90 line-clamp-2 w-full">
+                {editing.type === "file" ? (
+                  <>
+                    <Paperclip size="14" className="shrink-0" />
+                    <span className="truncate">
+                      {editing.content.filename ||
+                        t("conversations.files.attachment", "Attachment")}
+                    </span>
+                  </>
+                ) : (
+                  <span className="line-clamp-2 text-left wrap-break-word w-full">
+                    {editing.content.text}
+                  </span>
+                )}
+              </span>
             </div>
             <Button
-              variant={"ghost"}
+              variant="ghost"
+              size="icon"
               className="cursor-pointer"
               onClick={cancelComposerModes}
+              aria-label={t("common.cancel", "Cancel")}
             >
-              <X />
+              <X className="size-4" />
             </Button>
           </div>
         )}
         {replyTo && (
           <div className="w-full inline-flex justify-between items-center gap-2 px-4 pt-2 pb-1">
-            <div className="inline-flex min-w-0 items-start gap-2">
-              <Reply className="size-8 mt-0.5 text-muted-foreground" />
-              <div className="w-full bg-primary/5 p-2 rounded-sm whitespace-pre-wrap break-all wrap-anywhere">
-                <p className="text-xs text-muted-foreground mb-1 font-medium">
-                  {replyTo.sender_id === myUserId
-                    ? t("conversations.you")
-                    : activeChat.otherUser.full_name}
-                </p>
-                <p className="text-sm">{replyTo.content.text}</p>
-              </div>
+            <div className="min-w-0 flex-1 border-l-4 px-3 py-2 rounded-r-md rounded-l-sm text-left transition-colors flex flex-col bg-muted-foreground/10 border-muted-foreground/30 text-foreground">
+              <span className="text-xs font-semibold mb-0.5 text-muted-foreground inline-flex items-center gap-1.5">
+                <Reply className="size-3.5" />
+                {replyTo.sender_id === myUserId
+                  ? t("conversations.you")
+                  : activeChat.otherUser.full_name}
+              </span>
+              <span className="text-sm inline-flex items-center gap-1 opacity-90 line-clamp-2 w-full">
+                {replyTo.type === "file" ? (
+                  <>
+                    <Paperclip size="14" className="shrink-0" />
+                    <span className="truncate">
+                      {replyTo.content.filename ||
+                        t("conversations.files.attachment", "Attachment")}
+                    </span>
+                  </>
+                ) : (
+                  <span className="line-clamp-2 text-left wrap-break-word w-full">
+                    {replyTo.content.text}
+                  </span>
+                )}
+              </span>
             </div>
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
               className="cursor-pointer"
               onClick={cancelComposerModes}
+              aria-label={t("common.cancel", "Cancel")}
             >
-              <X />
+              <X className="size-4" />
             </Button>
           </div>
         )}
-        <div className="flex min-w-0 px-4 pt-2 pb-2">
+        {selectedFile && (
+          <div className="w-full inline-flex justify-between items-center gap-2 px-4 pt-2 pb-1">
+            <Attachment className="w-full min-w-0">
+              <AttachmentMedia>
+                {getFileIcon(selectedFile.type)}
+              </AttachmentMedia>
+              <AttachmentContent>
+                <AttachmentTitle>{selectedFile.name}</AttachmentTitle>
+                <AttachmentDescription>
+                  {(() => {
+                    const extension = selectedFile.name.includes(".")
+                      ? selectedFile.name.split(".").pop()?.toUpperCase()
+                      : "";
+                    return `${extension ? `${extension} • ` : ""}${formatBytes(selectedFile.size)}`;
+                  })()}
+                </AttachmentDescription>
+              </AttachmentContent>
+              <AttachmentActions>
+                <AttachmentAction
+                  onClick={() => {
+                    setSelectedFile(null);
+                    if (fileInputRef.current) {
+                      fileInputRef.current.value = "";
+                    }
+                  }}
+                  aria-label={t("common.remove", "Remove")}
+                >
+                  <X className="size-4" />
+                </AttachmentAction>
+              </AttachmentActions>
+            </Attachment>
+          </div>
+        )}
+        <div className="flex min-w-0 px-4 pt-2 pb-2 gap-2">
+          <input
+            ref={fileInputRef}
+            type="file"
+            className="hidden"
+            onChange={(event) => {
+              const file = event.target.files?.[0] ?? null;
+              setSelectedFile(file);
+            }}
+          />
+          <ButtonGroup>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => fileInputRef.current?.click()}
+              aria-label={t("conversations.attach_file", "Attach file")}
+              className="shrink-0 cursor-pointer"
+              disabled={Boolean(editing)}
+            >
+              <Paperclip className="size-4" />
+            </Button>
+            <EmojiPanel
+              onEmojiSelect={(emoji) =>
+                setMessageText((current) => current + emoji)
+              }
+              customTrigger={
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="shrink-0 cursor-pointer"
+                >
+                  <Smile className="size-4" />
+                </Button>
+              }
+              closeOnSelect={false}
+            />
+          </ButtonGroup>
+
           <ButtonGroup className="w-full">
             <Textarea
               ref={textareaRef}

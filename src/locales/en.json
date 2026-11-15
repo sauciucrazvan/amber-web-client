@@ -19,7 +19,9 @@
       "failed": "Connection to the selected server failed."
     },
     "online": "Online",
-    "offline": "Offline"
+    "offline": "Offline",
+    "error": "Something went wrong.",
+    "now": "now"
   },
   "downloadClient": {
     "title": "Get Amber for Windows",
@@ -430,7 +432,10 @@
     "actions": {
       "reply": "Reply",
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "react": "React",
+      "save_as": "Save as",
+      "view_reactions": "View reactions"
     },
     "deleted_message": "Successfully deleted the message.",
     "deleteMessage": {
@@ -446,8 +451,33 @@
       "too_long": "The message can not exceed 2048 characters.",
       "invalid_message": "An error occured and we couldn't find the message data. Try again later!",
       "no_permission": "You do not have permission to do that!",
-      "no_relation": "You are not friends with this users or they've blocked you."
-    }
+      "no_relation": "You are not friends with this users or they've blocked you.",
+      "invalid_reaction": "Invalid reaction.",
+      "too_many_reactions": "You can only use up to 16 different reactions per message.",
+      "file_too_big": "This file is too big.",
+      "file_type_not_accepted": "This file type is not accepted.",
+      "missing_file": "The file is missing or empty."
+    },
+    "files": {
+      "attachment": "Attachment"
+    },
+    "reactions": {
+      "add": "Click to react",
+      "hint": "Tap an emoji to add or remove your reaction.",
+      "more": "More reactions",
+      "quick": {
+        "laugh": "Laugh",
+        "like": "Like",
+        "love": "Love",
+        "smile": "Smile"
+      },
+      "remove": "Remove your reaction",
+      "title": "Reactions"
+    },
+    "attach_file": "Attach file",
+    "editing_message": "Editing message",
+    "failed_loading": "Could not load messages.",
+    "failed_sending": "Could not send message."
   },
   "calls": {
     "unknown": "Unknown",
@@ -509,7 +539,9 @@
       "rejectedWithActor": "{{actor}} rejected the call",
       "missed": "Missed call",
       "finished": "Finished the call",
-      "finishedWithActor": "{{actor}} finished the call"
+      "finishedWithActor": "{{actor}} finished the call",
+      "missedFrom": "Missed call from {{actor}}",
+      "missedNoAnswer": "{{actor}} did not answer the call"
     },
     "toasts": {
       "contactOffline": "This contact is offline.",
@@ -551,5 +583,13 @@
   "stats": {
     "member_since": "Member since",
     "last_active": "Last active"
+  },
+  "emoji": {
+    "panel": {
+      "insert": "Insert {{emoji}}",
+      "no_results": "No emojis found.",
+      "search_placeholder": "Search emoji",
+      "title": "Emojis!"
+    }
   }
 }
