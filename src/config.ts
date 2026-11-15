@@ -1,8 +1,8 @@
 const DEFAULT_API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ||
-  "https://api.amber.razvansauciuc.dev/api";
+  "https://api.amber.albertgalan.ro/api";
 const DEFAULT_WS_BASE_URL =
-  import.meta.env.VITE_WS_BASE_URL || "https://api.amber.razvansauciuc.dev/ws";
+  import.meta.env.VITE_WS_BASE_URL || "https://api.amber.albertgalan.ro/ws";
 
 export let API_BASE_URL = DEFAULT_API_BASE_URL;
 export let WS_BASE_URL = DEFAULT_WS_BASE_URL;
