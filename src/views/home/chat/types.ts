@@ -1,3 +1,11 @@
+export type MessageReactionDetails = {
+  emoji: string;
+  count: number;
+  user_ids: number[];
+  first_added_at?: string | null;
+  created_at?: string | null;
+};
+
 export type MessageItem = {
   id: string;
   conversation_id: string;
@@ -5,6 +13,12 @@ export type MessageItem = {
   seq: number;
   type: string;
   content: {
+    url?: string;
+    filename?: string;
+    content_type?: string;
+    size?: number;
+    width?: number;
+    height?: number;
     text?: string;
     event?: string;
     call_id?: string;
@@ -17,10 +31,12 @@ export type MessageItem = {
       date?: string;
     }>;
     reply_to?: {
+      type?: string;
       id: string;
       sender_id: number;
       content: {
-        text?: string | undefined;
+        filename?: string;
+        text?: string | null;
       };
       created_at: string;
     };
@@ -28,6 +44,8 @@ export type MessageItem = {
   created_at: string;
   edited_at: string | null;
   seen: boolean;
+  reactions?: Record<string, number>;
+  reaction_details?: MessageReactionDetails[];
 };
 
 export type AccountMe = {

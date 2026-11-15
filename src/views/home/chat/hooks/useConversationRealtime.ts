@@ -131,6 +131,23 @@ export function useConversationRealtime({
         return;
       }
 
+      if (eventData.event === "message.reacted") {
+        const reactedMessage = eventData.payload?.message;
+        if (!reactedMessage) return;
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === reactedMessage.id
+              ? {
+                  ...message,
+                  reactions: reactedMessage.reactions,
+                  reaction_details: reactedMessage.reaction_details,
+                }
+              : message,
+          ),
+        );
+        return;
+      }
+
       if (eventData.event === "messages.seen") {
         const seenMessageIds = new Set(eventData.payload?.message_ids ?? []);
         if (seenMessageIds.size === 0) return;

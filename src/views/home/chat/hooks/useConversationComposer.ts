@@ -38,6 +38,7 @@ export function useConversationComposer({
   onMessageActivity,
 }: UseConversationComposerParams) {
   const [messageText, setMessageText] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [replyTo, setReplyTo] = useState<MessageItem | null>(null);
   const [editing, setEditing] = useState<MessageItem | null>(null);
   const [isSending, setIsSending] = useState(false);
@@ -49,6 +50,7 @@ export function useConversationComposer({
     setReplyTo((current) =>
       current && current.conversation_id !== conversationId ? null : current,
     );
+    setSelectedFile(null);
   }, [conversationId]);
 
   useEffect(() => {
@@ -78,10 +80,16 @@ export function useConversationComposer({
     return () => window.clearTimeout(timeoutId);
   }, [replyTo]);
 
-  const canSend = useMemo(
-    () => messageText.trim().length > 0 && !isSending,
-    [isSending, messageText],
-  );
+  const canSend = useMemo(() => {
+    if (isSending) return false;
+    const hasText = messageText.trim().length > 0;
+    const hasFile = selectedFile !== null;
+
+    // Editing is text-only on backend, but allowed for file messages with caption.
+    if (editing) return hasText;
+
+    return hasText || hasFile;
+  }, [editing, isSending, messageText, selectedFile]);
 
   const emitLastActionUpdate = useCallback(
     (lastActionAt: string) => {
@@ -138,15 +146,20 @@ export function useConversationComposer({
     shouldAutoScrollRef.current = true;
     try {
       if (replyTo) {
-        const payload = { message_id: replyTo.id, text: trimmedMessage };
+        const payload = new FormData();
+        payload.append("message_id", replyTo.id);
+        if (trimmedMessage.length > 0) {
+          payload.append("text", trimmedMessage);
+        }
+        if (selectedFile) {
+          payload.append("file", selectedFile);
+        }
+
         const res = await authFetch(
           apiUrl(`/chats/v1/${conversationId}/reply`),
           {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
+            body: payload,
           },
         );
 
@@ -181,15 +194,19 @@ export function useConversationComposer({
           emitLastMessageUpdate(editedMessage);
         }
       } else {
-        const payload = { text: trimmedMessage };
+        const payload = new FormData();
+        if (trimmedMessage.length > 0) {
+          payload.append("text", trimmedMessage);
+        }
+        if (selectedFile) {
+          payload.append("file", selectedFile);
+        }
+
         const res = await authFetch(
           apiUrl(`/chats/v1/${conversationId}/messages`),
           {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
+            body: payload,
           },
         );
 
@@ -202,6 +219,7 @@ export function useConversationComposer({
       }
 
       setMessageText("");
+      setSelectedFile(null);
     } catch (e) {
       toast.error(
         e instanceof Error ? t(e.message) : t("conversations.failed_sending"),
@@ -285,6 +303,7 @@ export function useConversationComposer({
     (id: string) => {
       if (!conversationId) return;
       setEditing(null);
+      setSelectedFile(null);
       setReplyTo(messages.find((message) => message.id === id) ?? null);
     },
     [conversationId, messages],
@@ -294,6 +313,7 @@ export function useConversationComposer({
     (id: string) => {
       if (!conversationId) return;
       setReplyTo(null);
+      setSelectedFile(null);
       const messageToEdit =
         messages.find((message) => message.id === id) ?? null;
       setEditing(messageToEdit);
@@ -313,6 +333,8 @@ export function useConversationComposer({
   return {
     messageText,
     setMessageText,
+    selectedFile,
+    setSelectedFile,
     replyTo,
     setReplyTo,
     editing,

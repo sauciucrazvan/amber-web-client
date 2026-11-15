@@ -73,6 +73,8 @@ export function useConversationLogic({
     messages: data.messages,
     messageText: composer.messageText,
     setMessageText: composer.setMessageText,
+    selectedFile: composer.selectedFile,
+    setSelectedFile: composer.setSelectedFile,
     replyTo: composer.replyTo,
     setReplyTo: composer.setReplyTo,
     editing: composer.editing,
@@ -90,6 +92,8 @@ export function useConversationLogic({
     onDelete: composer.onDelete,
     onReply: composer.onReply,
     onEdit: composer.onEdit,
+    setMessages: data.setMessages,
+    replaceMessageById: data.replaceMessageById,
     onScroll: data.onScroll,
   };
 }
